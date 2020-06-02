@@ -13,7 +13,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "HomeUntility.h"
 #import "WebViewController.h"
-#import "FGNavigationViewController.h"
+#import "BaseNavigationController.h"
 #import "UserUtility.h"
 @interface HomeNewsController ()<SDCycleScrollViewDelegate>
 @property(nonatomic,strong) HomeNewsResponseModel * response;
@@ -215,7 +215,7 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
         
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        FGNavigationViewController *vc = [story instantiateViewControllerWithIdentifier:@"FGNavigationViewController"];
+        BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
         
         [self presentViewController:vc animated:YES completion:nil];
         
@@ -303,7 +303,7 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
         
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        FGNavigationViewController *vc = [story instantiateViewControllerWithIdentifier:@"FGNavigationViewController"];
+        BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
         
         [self presentViewController:vc animated:YES completion:nil];
         

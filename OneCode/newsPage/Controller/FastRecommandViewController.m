@@ -10,7 +10,7 @@
 #import <UMShare/UMShare.h>
 #import "UIImage+DrawImage.h"
 #import "UserUtility.h"
-#import "FGNavigationViewController.h"
+#import "BaseNavigationController.h"
 @interface FastRecommandViewController ()
 
 @property(nonatomic,strong) UIImageView * shareImg;
@@ -50,7 +50,7 @@
         
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        FGNavigationViewController *vc = [story instantiateViewControllerWithIdentifier:@"FGNavigationViewController"];
+        BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
         
         [self presentViewController:vc animated:YES completion:nil];
         

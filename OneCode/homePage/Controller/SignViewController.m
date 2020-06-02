@@ -242,7 +242,7 @@
         
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        FGNavigationViewController *vc = [story instantiateViewControllerWithIdentifier:@"FGNavigationViewController"];
+        BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
         
         [self presentViewController:vc animated:YES completion:nil];
         

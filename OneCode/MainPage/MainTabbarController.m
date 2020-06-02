@@ -7,7 +7,7 @@
 //
 
 #import "MainTabbarController.h"
-#import "FGNavigationViewController.h"
+#import "BaseNavigationController.h"
 #import "UserUtility.h"
 @interface MainTabbarController ()<UITabBarControllerDelegate>
 
@@ -49,7 +49,7 @@
     
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    FGNavigationViewController *vc = [story instantiateViewControllerWithIdentifier:@"FGNavigationViewController"];
+    BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
     
     [self presentViewController:vc animated:YES completion:nil];
     
@@ -85,7 +85,7 @@ if ([UserUtility hasLogin]) {
     
 UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
-FGNavigationViewController *vc = [story instantiateViewControllerWithIdentifier:@"FGNavigationViewController"];
+BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
 
 [self presentViewController:vc animated:YES completion:nil];
 

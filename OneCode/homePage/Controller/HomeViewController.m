@@ -10,7 +10,6 @@
 #import "HomeNewsController.h"
 #import "HomePolicyController.h"
 #import "SeachHistoryView.h"
-#import "FGNavigationViewController.h"
 #import "FGContentView.h"
 #import "FGScrollSegmentView.h"
 #import "HomeNewsController.h"
