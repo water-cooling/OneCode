@@ -32,7 +32,7 @@
     UIView *RightView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 55, 14)];
     UIButton * eyesBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     [eyesBtn setImage:[UIImage imageNamed:@"不可见"] forState:UIControlStateNormal];
-    [eyesBtn setImage:[UIImage imageNamed:@"eye"] forState:UIControlStateSelected];
+    [eyesBtn setImage:[UIImage imageNamed:@"可见"] forState:UIControlStateSelected];
     
     eyesBtn.frame = CGRectMake(0, 0, 20, 14);
     [RightView addSubview:eyesBtn];
@@ -53,10 +53,7 @@
 
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    
-    
-    if (textField.secureTextEntry)
-    {
+    if (textField.secureTextEntry){
         [textField insertText:self.PwdTextField.text];
     }
     
@@ -77,16 +74,10 @@
     NSString *text = self.PwdTextField.text;
     self.PwdTextField.text = @"";
     self.PwdTextField.text = text;
-    if (self.PwdTextField.secureTextEntry)
-    {
+    if (self.PwdTextField.secureTextEntry){
         [self.PwdTextField insertText:self.PwdTextField.text];
     }else
-    {
-        
-        
-        
-        
-    }
+    { }
     
 }
 
@@ -148,17 +139,13 @@
                 
                 //设置按钮的样式
                 [self.CodeBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
-                [self.CodeBtn setTitleColor:[UIColor colorWithHexString:@"#1A1A1A"] forState:UIControlStateNormal];
-                self.CodeBtn.layer.borderColor = [UIColor colorWithHexString:@"#333333"].CGColor;
-                
+                [self.CodeBtn setTitleColor:themeColor forState:UIControlStateNormal];
+                self.CodeBtn.layer.borderColor = themeColor.CGColor;
                 self.CodeBtn.userInteractionEnabled = YES;
             });
-            
         }else{
-            
             int seconds = time % 60;
             dispatch_async(dispatch_get_main_queue(), ^{
-                
                 //设置按钮显示读秒效果
                 [self.CodeBtn setTitle:[NSString stringWithFormat:@"%.0d后重新发送", seconds] forState:UIControlStateNormal];
                 [self.CodeBtn setTitleColor:[UIColor colorWithHexString:@"#999999"] forState:UIControlStateNormal];

@@ -31,12 +31,8 @@
     [UMConfigure setLogEnabled:YES];
     
     [LaunchIntroductionView sharedWithStoryboard:@"Main" images:@[@"launch0",@"launch1",@"launch2"] buttonImage:@"login" buttonFrame:CGRectMake(UISCREENWIDTH-80, SafeAreaTopHeight ? 48:28, 60, 25)];
-
-    
     [UMConfigure initWithAppkey:@"5b5fc45bf29d9811760007ff" channel:@"App Store"];
-    
     [[UMSocialManager defaultManager] openLog:YES];
-    
     [MobClick setCrashReportEnabled:YES];
 
   

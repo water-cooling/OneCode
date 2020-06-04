@@ -32,8 +32,7 @@
     UIView *RightView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 55, 14)];
     UIButton * eyesBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     [eyesBtn setImage:[UIImage imageNamed:@"不可见"] forState:UIControlStateNormal];
-    [eyesBtn setImage:[UIImage imageNamed:@"eye"] forState:UIControlStateSelected];
-    
+    [eyesBtn setImage:[UIImage imageNamed:@"可见"] forState:UIControlStateSelected];
     eyesBtn.frame = CGRectMake(0, 0, 20, 14);
     [RightView addSubview:eyesBtn];
     UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -41,19 +40,7 @@
     clearButton.frame = CGRectMake(41*iPhonescale, 0, 14, 14);
     [clearButton addTarget:self action:@selector(cleantextfield) forControlEvents:UIControlEventTouchUpInside];
     [eyesBtn addTarget:self action:@selector(ShowPwd:) forControlEvents:UIControlEventTouchUpInside];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    if (@available(iOS 11.0, *)) {
-        if ([self.scrollview respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
-            
-            self.scrollview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }
-        
-    }else {
-        
-        self.automaticallyAdjustsScrollViewInsets = NO;
-        
-    }
+    [self setIOS:self.scrollview];
     [RightView addSubview:clearButton];
     _PwdTextField.rightView = RightView;
     _PwdTextField.rightViewMode = UITextFieldViewModeWhileEditing;
@@ -154,9 +141,8 @@
                 
                 //设置按钮的样式
                 [self.CodeBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
-                [self.CodeBtn setTitleColor:[UIColor colorWithHexString:@"#1A1A1A"] forState:UIControlStateNormal];
-                self.CodeBtn.layer.borderColor = [UIColor colorWithHexString:@"#333333"].CGColor;
-                
+                [self.CodeBtn setTitleColor:themeColor forState:UIControlStateNormal];
+                self.CodeBtn.layer.borderColor = themeColor.CGColor;
                 self.CodeBtn.userInteractionEnabled = YES;
             });
             
@@ -180,22 +166,11 @@
 -(void)GetloadingCode:(NSString *)ID ImageValue:(NSString*)value{
     
     [UserUtility SendCodeID:ID imgValue:value type:@"reg" mobile:self.IphoneTextField.text callback:^(SucceedModel *succeed, FGError *error) {
-        
         if (error == nil) {
-            
-            
             [MBManager showBriefAlert:@"您已经成功的获取到验证码"];
-            
-            
-        }else
-        {
-            
+        }else{
             [MBManager showBriefAlert:error.descriptionStr];
-            
-            
         }
-        
-        
     }];
     
     
@@ -207,17 +182,11 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    
-    
-    if (textField.secureTextEntry)
-    {
+    if (textField.secureTextEntry){
         [textField insertText:self.PwdTextField.text];
     }
-    
-    
 }
 -(void)cleantextfield{
-    
     self.PwdTextField.text = @"";
 }
 
@@ -233,12 +202,7 @@
     {
         [self.PwdTextField insertText:self.PwdTextField.text];
     }else
-    {
-        
-        
-        
-        
-    }
+    {}
     
 }
 

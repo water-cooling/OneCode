@@ -351,7 +351,7 @@
 			children = (
 				27BEA3A22485510C0075574C /* Bundle */,
 				27BEA39B248550FB0075574C /* Base */,
-				27BEA2D524854F8F0075574C /* Extension */,
+				27BEA2D524854F8F0075574C /* Category */,
 				27BEA28B24854F8F0075574C /* homePage */,
 				27BEA2E824854F900075574C /* loginPage */,
 				27BEA33E24854F920075574C /* MainPage */,
@@ -440,15 +440,15 @@
 		27BEA28C24854F8F0075574C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				27BEA28D24854F8F0075574C /* HomeViewController.m */,
-				27BEA28E24854F8F0075574C /* HomePolicyController.h */,
 				27BEA28F24854F8F0075574C /* HomeNewsController.h */,
+				27BEA29424854F8F0075574C /* HomeNewsController.m */,
+				27BEA28E24854F8F0075574C /* HomePolicyController.h */,
+				27BEA29324854F8F0075574C /* HomePolicyController.m */,
+				27BEA29224854F8F0075574C /* HomeViewController.h */,
+				27BEA28D24854F8F0075574C /* HomeViewController.m */,
+				27BEA29524854F8F0075574C /* SignViewController.h */,
 				27BEA29024854F8F0075574C /* SignViewController.m */,
 				27BEA29124854F8F0075574C /* SignViewController.xib */,
-				27BEA29224854F8F0075574C /* HomeViewController.h */,
-				27BEA29324854F8F0075574C /* HomePolicyController.m */,
-				27BEA29424854F8F0075574C /* HomeNewsController.m */,
-				27BEA29524854F8F0075574C /* SignViewController.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -582,7 +582,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		27BEA2D524854F8F0075574C /* Extension */ = {
+		27BEA2D524854F8F0075574C /* Category */ = {
 			isa = PBXGroup;
 			children = (
 				27BEA2E124854F8F0075574C /* CALayer+Color.h */,
@@ -604,7 +604,7 @@
 				27BEA2E224854F8F0075574C /* UIView+WHC_ViewProperty.h */,
 				27BEA2DC24854F8F0075574C /* UIView+WHC_ViewProperty.m */,
 			);
-			path = Extension;
+			path = Category;
 			sourceTree = "<group>";
 		};
 		27BEA2E824854F900075574C /* loginPage */ = {
@@ -638,15 +638,15 @@
 		27BEA2EF24854F900075574C /* Viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
-				27BEA2F024854F900075574C /* ShowCodeVC.xib */,
-				27BEA2F124854F900075574C /* RegiseViewController.h */,
-				27BEA2F224854F900075574C /* LoginViewController.m */,
-				27BEA2F324854F900075574C /* EditPwdViewController.m */,
-				27BEA2F424854F900075574C /* ShowCodeVC.m */,
-				27BEA2F524854F900075574C /* RegiseViewController.m */,
-				27BEA2F624854F900075574C /* LoginViewController.h */,
-				27BEA2F724854F900075574C /* ShowCodeVC.h */,
 				27BEA2F824854F900075574C /* EditPwdViewController.h */,
+				27BEA2F324854F900075574C /* EditPwdViewController.m */,
+				27BEA2F624854F900075574C /* LoginViewController.h */,
+				27BEA2F224854F900075574C /* LoginViewController.m */,
+				27BEA2F124854F900075574C /* RegiseViewController.h */,
+				27BEA2F524854F900075574C /* RegiseViewController.m */,
+				27BEA2F724854F900075574C /* ShowCodeVC.h */,
+				27BEA2F424854F900075574C /* ShowCodeVC.m */,
+				27BEA2F024854F900075574C /* ShowCodeVC.xib */,
 			);
 			path = Viewcontroller;
 			sourceTree = "<group>";

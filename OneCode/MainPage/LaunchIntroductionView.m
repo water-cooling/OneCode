@@ -14,6 +14,7 @@ static NSString *const kAppVersion = @"appVersion";
 @property(nonatomic,strong)  UIScrollView  *launchScrollView;
 @property(nonatomic,strong)  UIPageControl  *control;
 @property(nonatomic,strong)  UIButton  *skipBtn;
+@property(nonatomic,strong)  UIButton  *enterBtn;
 @property(nonatomic,strong)NSTimer * timer;
 
 @end
@@ -42,9 +43,6 @@ NSString *storyboard;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        _timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(executeAnimation) userInfo:nil repeats:YES];
-        
         [self addObserver:self forKeyPath:@"currentColor" options:NSKeyValueObservingOptionNew context:nil];
         [self addObserver:self forKeyPath:@"nomalColor" options:NSKeyValueObservingOptionNew context:nil];
         if ([self isFirstLauch]) {
@@ -93,22 +91,6 @@ NSString *storyboard;
     [self createScrollView];
 }
 
-
--(void)executeAnimation{
-    
-    if (self.launchScrollView.contentOffset.x / UISCREENWIDTH  < 2) {
-        
-        self.launchScrollView.contentOffset = CGPointMake(self.launchScrollView.contentOffset.x + UISCREENWIDTH, 0);
-    }else
-    {
-        [self enterBtnClick];
-        
-        self.timer = nil;
-        
-        
-    }
-    
-}
 #pragma mark - 创建滚动视图
 -(void)createScrollView{
     self.launchScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreen_width, kScreen_height)];
@@ -125,16 +107,13 @@ NSString *storyboard;
         
     }
     self.control = [[UIPageControl alloc]initWithFrame:CGRectMake((UISCREENWIDTH-43)/2, 168*iPhonescale, 43, 10)];
-    
     self.control.numberOfPages = 3;
-    
     self.control.currentPage = 0;
-    
-    self.control.currentPageIndicatorTintColor = [UIColor colorWithHexString:@"#F2BE2A"];
-    
+    self.control.currentPageIndicatorTintColor = [UIColor colorWithHexString:@"#3A87F7"];
     self.control.pageIndicatorTintColor = [UIColor whiteColor];
-    
     [self addSubview:self.control];
+    self.enterBtn.frame = CGRectMake((UISCREENWIDTH-43)/2, 168*iPhonescale, 75, 25);
+    self.enterBtn.hidden = YES;
 }
 #pragma mark - 进入按钮
 -(void)enterBtnClick{
@@ -154,37 +133,17 @@ NSString *storyboard;
 
 
 #pragma mark - scrollView Delegate
-
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    
-    [_timer setFireDate:[NSDate distantFuture]];
-    
-    
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    
-    
-    if (decelerate) {
-        
-        
-        [_timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:1.5]];
-        
-    }
-    
-    
-    
-    
-}
-
-
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView == self.launchScrollView) {
         int cuttentIndex = (int)(scrollView.contentOffset.x + kScreen_width/2)/kScreen_width;
         self.control.currentPage = cuttentIndex;
-        
+        if (cuttentIndex>2) {
+            self.control.hidden = YES;
+            self.enterBtn.hidden = NO;
+        }else{
+            self.control.hidden = NO;
+            self.enterBtn.hidden = YES;
+        }
     }
 }
 #pragma mark - 判断滚动方向
@@ -206,27 +165,34 @@ NSString *storyboard;
     }
 }
 
--(UIButton *)skipBtn
-{
+-(UIButton *)skipBtn{
     if (!_skipBtn) {
-        
         _skipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        
         [_skipBtn setTitle:@"跳过" forState:UIControlStateNormal];
-        
-        _skipBtn.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.8];
-        _skipBtn.layer.cornerRadius = 10;
+        _skipBtn.layer.cornerRadius = 12.5;
         _skipBtn.layer.masksToBounds = YES;
+        _skipBtn.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.8];
         [_skipBtn setTitleColor:[[UIColor blackColor]colorWithAlphaComponent:0.7] forState:UIControlStateNormal];
-        
         [_skipBtn addTarget:self action:@selector(enterBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        
-        _skipBtn.titleLabel.font = [UIFont  systemFontOfSize:11];
-        
+        _skipBtn.titleLabel.font = [UIFont  systemFontOfSize:13];
         [self addSubview:_skipBtn];
     }
-    
     return _skipBtn;
+    
+}
+-(UIButton *)enterBtn{
+    if (!_enterBtn) {
+        _enterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_enterBtn setTitle:@"立即体验" forState:UIControlStateNormal];
+        _enterBtn.backgroundColor = [UIColor colorWithHexString:@"#3A87F7"];
+        _enterBtn.layer.cornerRadius = 12.5;
+        _enterBtn.layer.masksToBounds = YES;
+        [_enterBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_enterBtn addTarget:self action:@selector(enterBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        _enterBtn.titleLabel.font = [UIFont  systemFontOfSize:13];
+        [self addSubview:_enterBtn];
+    }
+    return _enterBtn;
     
 }
 

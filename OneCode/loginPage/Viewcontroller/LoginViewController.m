@@ -28,25 +28,12 @@
     UIView *RightView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 55, 14)];
     UIButton * eyesBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     [eyesBtn setImage:[UIImage imageNamed:@"不可见"] forState:UIControlStateNormal];
-    [eyesBtn setImage:[UIImage imageNamed:@"eye"] forState:UIControlStateSelected];
+    [eyesBtn setImage:[UIImage imageNamed:@"可见"] forState:UIControlStateSelected];
     [eyesBtn addTarget:self action:@selector(ShowPwd:) forControlEvents:UIControlEventTouchUpInside];
 
     eyesBtn.frame = CGRectMake(0, 0, 20, 14);
     [RightView addSubview:eyesBtn];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-
-    if (@available(iOS 11.0, *)) {
-        if ([self.scrollview respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
-            
-            self.scrollview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }
-        
-
-    }else {
-        
-        self.automaticallyAdjustsScrollViewInsets = NO;
-        
-    }
+    [self setIOS:self.scrollview];
     
     _PwdTextField.rightView = RightView;
     _PwdTextField.rightViewMode = UITextFieldViewModeWhileEditing;

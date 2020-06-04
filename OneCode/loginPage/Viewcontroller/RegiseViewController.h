@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegiseViewController : UIViewController
+@interface RegiseViewController : BaseViewController
 
 @end
