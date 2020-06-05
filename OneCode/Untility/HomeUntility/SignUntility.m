@@ -53,8 +53,7 @@
     
 }
 
-+ (void)GetSignListcallback:(void (^)(SignListdataModel *, FGError *))block
-{
++ (void)GetSignListcallback:(void (^)(SignListdataModel *, FGError *))block{
     
     NSString * url =  [bihucjUrl stringByAppendingString:@"api/bihucj/signIn/getSignInBase"];
     
@@ -69,8 +68,6 @@
     //不需要进行请求头可以不设置
     
     NSDictionary * dict = @{@"appId":APPid,@"sessionKey":@""};
-    
-    
     [manager POST:url parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         SignListModels* success = [SignListModels mj_objectWithKeyValues:responseObject];

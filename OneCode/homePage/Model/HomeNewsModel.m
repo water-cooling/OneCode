@@ -29,7 +29,7 @@
 
 @implementation HomeNewsResponseModel
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"rows" : @"HomeNewsModel",
              @"advRows" : @"BannerModel",
@@ -48,7 +48,7 @@
 
 @implementation HomeNewsModels
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
              

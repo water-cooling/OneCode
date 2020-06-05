@@ -19,7 +19,7 @@
 
 @implementation PicsUpModel
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
              

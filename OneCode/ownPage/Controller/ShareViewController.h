@@ -7,26 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-
 @protocol shareLinkResultDelegate<NSObject>
-
-
 -(void)shareLinkResult:(BOOL)result AndCancel:(BOOL)cancel;
-;
 
 @end
-
-
 @interface ShareViewController : UIViewController
-
 @property(nonatomic,copy)NSString * sharetilte;
-
 @property(nonatomic,copy)NSString * shareLink;
-
-
-
 @property(nonatomic,weak) id<shareLinkResultDelegate>  delegate;
-
 
 @end

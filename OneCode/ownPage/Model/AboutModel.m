@@ -16,7 +16,7 @@
 @end
 
 @implementation AboutModels
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
              

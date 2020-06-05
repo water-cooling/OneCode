@@ -18,7 +18,7 @@
 @end
 
 @implementation RecommandModels
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
              

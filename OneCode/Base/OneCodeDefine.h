@@ -36,17 +36,13 @@
 #define kDevice_Is_iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
 #define iPhone6PlusBigMode ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen]currentMode].size) : NO)
 
-#define APPid @"470898664970125312"
+#define APPid @"624766110637531136"
 #define KHistorySearchPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"Searchhistories.plist"]
 
 #define phoneVersion [[UIDevice currentDevice] systemVersion]
 
 #define HeadDefault [UIImage imageNamed:@"头像"]
-
-#define bihucjUrl @"http://www.aganyun.com/cx.otenda/"
-#define bihutest @"http://otenda.project.njagan.org/cx.otenda/"
-
-
+#define bihucjUrl @"http://www.eleoke.com/cx.eleoke/"
 #define kDevice_iPhoneX \
 ({BOOL isPhoneX = NO;\
 if (@available(iOS 11.0, *)) {\
@@ -54,8 +50,6 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 }\
 (isPhoneX);})
 
-
-//适配参数
 
 #define SafeAreaTopHeight (kDevice_iPhoneX ? 88 : 64)
 

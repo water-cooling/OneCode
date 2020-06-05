@@ -229,22 +229,13 @@
 -(void)shareClick{
     
     ShareViewController * share = [[ShareViewController alloc]initWithNibName:@"ShareViewController" bundle:nil];
-    
     share.delegate = self;
-    
-    
     share.shareLink =   [NSString stringWithFormat:@"%@?hideDown=0",self.linkStr];
-    
-    
     if (self.timer) {
-        
         dispatch_suspend(_timer);
-
     }
     share.definesPresentationContext = YES;
-    
     share.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    
     [self.navigationController  presentViewController:share animated:NO completion:nil];
 }
 

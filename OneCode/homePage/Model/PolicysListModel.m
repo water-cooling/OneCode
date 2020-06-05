@@ -22,7 +22,7 @@
 
 @implementation PolicysListResponseModel
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"rows" : @"PolicysListModel",
              
@@ -40,7 +40,7 @@
 
 @implementation PolicysListModels
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
              

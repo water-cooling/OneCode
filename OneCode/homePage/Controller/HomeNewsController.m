@@ -74,28 +74,20 @@
     }];
 }
 
-- (void)SeachContent:(NSString *)Str
-{
+- (void)SeachContent:(NSString *)Str{
     self.seachStr = Str;
-    
     [self loadingHomeNewsDataLoc:self.DownIndex count:10 tTitleLike:self.seachStr SelectIndex:self.SelectIndex refresh:YES];
 }
 
-- (void)zj_viewWillAppearForIndex:(NSInteger)index
-
-{
+- (void)zj_viewWillAppearForIndex:(NSInteger)index{
         self.DownIndex = 1;
-        
         [self.tableView.mj_footer resetNoMoreData];
-    
     self.seachStr = @"";
-    
     [self loadingHomeNewsDataLoc:self.DownIndex count:10 tTitleLike:self.seachStr SelectIndex:self.SelectIndex refresh:YES];
 
 }
 
 -(void)loadingHomeNewsDataLoc:(NSInteger)Loc count:(NSInteger)count tTitleLike:(NSString * )Str SelectIndex:(NSInteger)index refresh:(BOOL)isdown{
-    
     BOOL Adv ;
     
     if (index == 0 || index == 3) {
@@ -234,20 +226,14 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
             [self.tableView reloadData];
             
             WebViewController * web = [[WebViewController alloc]init];
-            
             web.Adv = NO;
-
             web.linkStr = model.detailH5;
             
             web.sharetilte = model.tTitle;
-            
-
-
             switch (self.SelectIndex) {
                 case 0:
                     web.title = @"新闻详情";
                     break;
-                    
                 case 1:
                     web.title = @"号外详情";
                     break;
@@ -295,10 +281,7 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
 
 #pragma mark bannerDelelgate
 
-- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
-{
-    
-    
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     if (![UserUtility hasLogin]) {
         
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

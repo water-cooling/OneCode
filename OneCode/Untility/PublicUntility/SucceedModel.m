@@ -21,7 +21,7 @@
 @implementation SucceedModels
 
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
              

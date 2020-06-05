@@ -10,20 +10,19 @@
 
 @implementation FastNewListModel
 
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{@"Format": @"dateFormat"};
+}
 
 @end
 
 @implementation FastNewListResponseModel
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
-             @"rows" : @"FastNewListModel",
-             
+             @"rows":@"FastNewListModel",// 或者
              };
-    
 }
-
 
 @end
 
@@ -33,13 +32,12 @@
 
 @implementation FastNewListModels
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
-             
              };
-    
 }
+
 
 
 @end

@@ -22,8 +22,7 @@
 @end
 
 @implementation OwnCountModels
-
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
              

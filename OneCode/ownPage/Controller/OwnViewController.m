@@ -433,9 +433,7 @@
 
 
 - (IBAction)changeHeightClick:(UIButton *)sender {
-   
     sender.selected = !sender.selected;
-    
     self.stateArr[sender.tag -100] =  sender.selected ? @(1) : @(0);
     
 //    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:sender.tag -100 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];

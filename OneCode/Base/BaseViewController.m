@@ -26,7 +26,6 @@
         // 针对13.0 以上的iOS系统进行处理
         [self setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
     }
-    [self.navigationController.navigationBar KPHideShadowImagebackImageColor:themeColor];
     [self setFakeNavigationBarCommonLeftButton];
     NSDictionary * dict=[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     self.navigationController.navigationBar.titleTextAttributes = dict;

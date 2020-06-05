@@ -10,7 +10,7 @@
 
 @implementation digiccyTitleModel
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
              

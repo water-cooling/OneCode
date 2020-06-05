@@ -18,7 +18,7 @@
 
 @implementation ownShowResponseModel
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"rows" : @"ownShowModel",
              
@@ -36,7 +36,7 @@
 
 @implementation ownShowModels
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
              

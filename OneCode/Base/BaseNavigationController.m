@@ -27,7 +27,9 @@
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
-
+-(void)viewDidLayoutSubviews{
+    [self.navigationBar KPHideShadowImagebackImageColor:themeColor];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

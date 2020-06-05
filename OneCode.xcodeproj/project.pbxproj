@@ -93,11 +93,11 @@
 		27BEA39624854F930075574C /* FGContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA33824854F920075574C /* FGContentView.m */; };
 		27BEA39724854F930075574C /* FGScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA33924854F920075574C /* FGScrollSegmentView.m */; };
 		27BEA39824854F930075574C /* UserUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA33D24854F920075574C /* UserUtility.m */; };
-		27BEA39924854F930075574C /* LaunchIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA33F24854F920075574C /* LaunchIntroductionView.m */; };
 		27BEA39A24854F930075574C /* MainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA34024854F920075574C /* MainTabbarController.m */; };
 		27BEA3A0248550FC0075574C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA39C248550FB0075574C /* BaseViewController.m */; };
 		27BEA3A1248550FC0075574C /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA39D248550FB0075574C /* BaseNavigationController.m */; };
 		9D6A9C3449D3FE835F96B45A /* libPods-OneCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FE6388431BB21818880743 /* libPods-OneCode.a */; };
+		BE313C812489F982007A399B /* LaunchIntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE313C802489F982007A399B /* LaunchIntroductionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,9 +284,7 @@
 		27BEA33A24854F920075574C /* UIViewController+ZJScrollPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZJScrollPageController.h"; sourceTree = "<group>"; };
 		27BEA33C24854F920075574C /* UserUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUtility.h; sourceTree = "<group>"; };
 		27BEA33D24854F920075574C /* UserUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserUtility.m; sourceTree = "<group>"; };
-		27BEA33F24854F920075574C /* LaunchIntroductionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchIntroductionView.m; sourceTree = "<group>"; };
 		27BEA34024854F920075574C /* MainTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabbarController.m; sourceTree = "<group>"; };
-		27BEA34124854F920075574C /* LaunchIntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchIntroductionView.h; sourceTree = "<group>"; };
 		27BEA34224854F920075574C /* MainTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabbarController.h; sourceTree = "<group>"; };
 		27BEA39C248550FB0075574C /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		27BEA39D248550FB0075574C /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
@@ -295,6 +293,8 @@
 		27BEA3A4248551E20075574C /* OneCodeDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneCodeDefine.h; sourceTree = "<group>"; };
 		745D435FF655AEBBD076BBCD /* Pods-OneCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneCode.debug.xcconfig"; path = "Target Support Files/Pods-OneCode/Pods-OneCode.debug.xcconfig"; sourceTree = "<group>"; };
 		75FE6388431BB21818880743 /* libPods-OneCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE313C7F2489F981007A399B /* LaunchIntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchIntroductionViewController.h; sourceTree = "<group>"; };
+		BE313C802489F982007A399B /* LaunchIntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchIntroductionViewController.m; sourceTree = "<group>"; };
 		CB67FFC9B9DCE456176C8047 /* Pods-OneCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneCode.release.xcconfig"; path = "Target Support Files/Pods-OneCode/Pods-OneCode.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -440,12 +440,12 @@
 		27BEA28C24854F8F0075574C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				27BEA29224854F8F0075574C /* HomeViewController.h */,
+				27BEA28D24854F8F0075574C /* HomeViewController.m */,
 				27BEA28F24854F8F0075574C /* HomeNewsController.h */,
 				27BEA29424854F8F0075574C /* HomeNewsController.m */,
 				27BEA28E24854F8F0075574C /* HomePolicyController.h */,
 				27BEA29324854F8F0075574C /* HomePolicyController.m */,
-				27BEA29224854F8F0075574C /* HomeViewController.h */,
-				27BEA28D24854F8F0075574C /* HomeViewController.m */,
 				27BEA29524854F8F0075574C /* SignViewController.h */,
 				27BEA29024854F8F0075574C /* SignViewController.m */,
 				27BEA29124854F8F0075574C /* SignViewController.xib */,
@@ -456,14 +456,14 @@
 		27BEA29624854F8F0075574C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				27BEA29724854F8F0075574C /* SignModel.h */,
-				27BEA29824854F8F0075574C /* PolicysListModel.h */,
-				27BEA29924854F8F0075574C /* SignListModel.h */,
 				27BEA29A24854F8F0075574C /* HomeNewsModel.h */,
-				27BEA29B24854F8F0075574C /* SignModel.m */,
 				27BEA29C24854F8F0075574C /* HomeNewsModel.m */,
-				27BEA29D24854F8F0075574C /* SignListModel.m */,
+				27BEA29824854F8F0075574C /* PolicysListModel.h */,
 				27BEA29E24854F8F0075574C /* PolicysListModel.m */,
+				27BEA29924854F8F0075574C /* SignListModel.h */,
+				27BEA29D24854F8F0075574C /* SignListModel.m */,
+				27BEA29724854F8F0075574C /* SignModel.h */,
+				27BEA29B24854F8F0075574C /* SignModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -493,12 +493,12 @@
 		27BEA2A624854F8F0075574C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				27BEA2AA24854F8F0075574C /* FastNewsViewController.h */,
 				27BEA2A724854F8F0075574C /* FastNewsViewController.m */,
 				27BEA2A824854F8F0075574C /* FastRecommandViewController.h */,
-				27BEA2A924854F8F0075574C /* ResultTableViewController.m */,
-				27BEA2AA24854F8F0075574C /* FastNewsViewController.h */,
 				27BEA2AB24854F8F0075574C /* FastRecommandViewController.m */,
 				27BEA2AC24854F8F0075574C /* ResultTableViewController.h */,
+				27BEA2A924854F8F0075574C /* ResultTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -506,9 +506,9 @@
 		27BEA2AD24854F8F0075574C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				27BEA2AE24854F8F0075574C /* FastNewListModel.h */,
 				27BEA2AF24854F8F0075574C /* AttriModelHeightModel.h */,
 				27BEA2B024854F8F0075574C /* AttriModelHeightModel.m */,
+				27BEA2AE24854F8F0075574C /* FastNewListModel.h */,
 				27BEA2B124854F8F0075574C /* FastNewListModel.m */,
 			);
 			path = Model;
@@ -518,11 +518,11 @@
 			isa = PBXGroup;
 			children = (
 				27BEA2B324854F8F0075574C /* NormalTableViewCell.h */,
-				27BEA2B424854F8F0075574C /* ResultTableViewCell.h */,
-				27BEA2B524854F8F0075574C /* NormalTableViewCell.xib */,
-				27BEA2B624854F8F0075574C /* ResultTableViewCell.xib */,
 				27BEA2B724854F8F0075574C /* NormalTableViewCell.m */,
+				27BEA2B524854F8F0075574C /* NormalTableViewCell.xib */,
+				27BEA2B424854F8F0075574C /* ResultTableViewCell.h */,
 				27BEA2B824854F8F0075574C /* ResultTableViewCell.m */,
+				27BEA2B624854F8F0075574C /* ResultTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -540,20 +540,20 @@
 		27BEA2BA24854F8F0075574C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				27BEA2BB24854F8F0075574C /* OwnViewController.m */,
-				27BEA2BC24854F8F0075574C /* ShareViewController.xib */,
-				27BEA2BD24854F8F0075574C /* MySweetTableViewController.h */,
-				27BEA2BE24854F8F0075574C /* OwnShareViewController.h */,
+				27BEA2C424854F8F0075574C /* AboutViewController.h */,
 				27BEA2BF24854F8F0075574C /* AboutViewController.m */,
 				27BEA2C024854F8F0075574C /* EditIphoneViewController.h */,
-				27BEA2C124854F8F0075574C /* ShareViewController.m */,
+				27BEA2C724854F8F0075574C /* EditIphoneViewController.m */,
+				27BEA2BD24854F8F0075574C /* MySweetTableViewController.h */,
 				27BEA2C224854F8F0075574C /* MySweetTableViewController.m */,
-				27BEA2C324854F8F0075574C /* OwnViewController.h */,
-				27BEA2C424854F8F0075574C /* AboutViewController.h */,
+				27BEA2BE24854F8F0075574C /* OwnShareViewController.h */,
 				27BEA2C524854F8F0075574C /* OwnShareViewController.m */,
 				27BEA2C624854F8F0075574C /* OwnShareViewController.xib */,
-				27BEA2C724854F8F0075574C /* EditIphoneViewController.m */,
+				27BEA2C324854F8F0075574C /* OwnViewController.h */,
+				27BEA2BB24854F8F0075574C /* OwnViewController.m */,
 				27BEA2C824854F8F0075574C /* ShareViewController.h */,
+				27BEA2C124854F8F0075574C /* ShareViewController.m */,
+				27BEA2BC24854F8F0075574C /* ShareViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -773,10 +773,8 @@
 		27BEA33E24854F920075574C /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
-				27BEA33F24854F920075574C /* LaunchIntroductionView.m */,
-				27BEA34024854F920075574C /* MainTabbarController.m */,
-				27BEA34124854F920075574C /* LaunchIntroductionView.h */,
 				27BEA34224854F920075574C /* MainTabbarController.h */,
+				27BEA34024854F920075574C /* MainTabbarController.m */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -784,6 +782,8 @@
 		27BEA39B248550FB0075574C /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				BE313C7F2489F981007A399B /* LaunchIntroductionViewController.h */,
+				BE313C802489F982007A399B /* LaunchIntroductionViewController.m */,
 				27BEA3A4248551E20075574C /* OneCodeDefine.h */,
 				27BEA39E248550FB0075574C /* BaseNavigationController.h */,
 				27BEA39D248550FB0075574C /* BaseNavigationController.m */,
@@ -1026,7 +1026,6 @@
 				27BEA35624854F930075574C /* ResultTableViewController.m in Sources */,
 				27BEA35024854F930075574C /* SignListModel.m in Sources */,
 				27BEA35724854F930075574C /* FastRecommandViewController.m in Sources */,
-				27BEA39924854F930075574C /* LaunchIntroductionView.m in Sources */,
 				27BEA34424854F930075574C /* moneyDetailModel.m in Sources */,
 				27BEA39824854F930075574C /* UserUtility.m in Sources */,
 				27BEA35924854F930075574C /* FastNewListModel.m in Sources */,
@@ -1035,6 +1034,7 @@
 				27BEA37424854F930075574C /* UserModel.m in Sources */,
 				27BEA36C24854F930075574C /* CALayer+Color.m in Sources */,
 				27BEA38C24854F930075574C /* MessageModel.m in Sources */,
+				BE313C812489F982007A399B /* LaunchIntroductionViewController.m in Sources */,
 				27BEA38A24854F930075574C /* UpImgUntility.m in Sources */,
 				27BEA34824854F930075574C /* MoneyDetailTableViewController.m in Sources */,
 				27BEA37E24854F930075574C /* WebViewController.m in Sources */,
@@ -1258,6 +1258,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R6WL5QUVS6;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/OneCode/Base/OneCode.pch";
 				INFOPLIST_FILE = OneCode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1278,6 +1279,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R6WL5QUVS6;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/OneCode/Base/OneCode.pch";
 				INFOPLIST_FILE = OneCode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

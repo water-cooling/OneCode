@@ -14,7 +14,7 @@
 
 @implementation SignListdataModel
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"response" : @"SignListModel",
              
@@ -25,9 +25,7 @@
 @end
 
 @implementation SignListModels
-
-
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
              

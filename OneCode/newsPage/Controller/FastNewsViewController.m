@@ -86,10 +86,7 @@
 -(void)loadingFastNewsDataLoc:(NSInteger)Loc count:(NSInteger)count tTitleLike:(NSString * )Str refresh:(BOOL)isdown{
 
     [NewsUntility GetFlashspageNo:Loc pageSize:count tTitleLike:Str callback:^(FastNewListResponseModel *Response, FGError *error) {
-       
-        
         if (isdown) {
-            
             [self.Newstableview.mj_header endRefreshing];
             
             if (Response.rows.count == 0) {
@@ -111,30 +108,18 @@
         if (!error) {
             
             if (isdown) {
-                
                 self.response = Response;
                 
-            }else
-            {
+            }else{
                 [self.response.rows addObjectsFromArray:Response.rows];
-                
             }
-            
-
             [self.Newstableview reloadData];
 
         
-        }else
-        {
-            
+        }else{
             [MBManager showBriefAlert:error.descriptionStr];
         }
-        
-        
     }];
-        
-        
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -201,14 +186,11 @@
 }
 
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FastNewListModel * model = self.response.rows[indexPath.row];
-    
     NormalTableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:@"NormalTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellAccessoryNone;
-    if ([model.dateFormat isEqualToString:@""]) {
+    if ([model.Format isEqualToString:@""]) {
         
         cell.BottomHeight.constant = 0;
 
@@ -234,7 +216,6 @@
     cell.tag= indexPath.row;
     
     cell.MoreBtn.hidden = model.expand;
-    
     cell.titlelab.text = model.tTitle;
     
     cell.Contentlab.numberOfLines =  model.expand ? 0 :2;
@@ -244,22 +225,18 @@
 
     cell.typeLab.text = model.typeName;
     cell.TimeLab.text  = model.time;
-    cell.DesLab.text = model.dateFormat;
+    cell.DesLab.text = model.Format;
     return cell;
     
 }
 
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     FastNewListModel * model = self.response.rows[indexPath.row];
-
-    CGFloat CellHeight =   [model.dateFormat isEqualToString:@""] ? 0 : 30;
-    
+    CGFloat CellHeight =   [model.Format isEqualToString:@""] ? 0 : 30;
     CellHeight = CellHeight + 105 + [model.tTitle getLabel:[UIFont systemFontOfSize:16]  LabWdith:UISCREENWIDTH - 51];
 
     CellHeight = CellHeight + [self.model getSpaceLabelAttriCacheIndexPath:indexPath];
-    
     if (indexPath.row == 0) {
         
         NSLog(@"%f-----%f-----%f",CellHeight,[model.tTitle getLabel:[UIFont systemFontOfSize:16]  LabWdith:UISCREENWIDTH - 51],[self.model getSpaceLabelAttriCacheIndexPath:indexPath]);
@@ -341,105 +318,66 @@
     
     return _Newstableview;
     
-    
 }
-
 -(UISearchBar *)searchbar{
-    
-    if (_searchbar == nil) {
-        
-        _searchbar = [[UISearchBar alloc]init];
+    if (!_searchbar) {
+        _searchbar =[[UISearchBar alloc]init];
         _searchbar.placeholder = @"搜索关键字";
-        UITextField *textfield = [_searchbar valueForKey:@"searchField"];
-        textfield.borderStyle = UITextBorderStyleNone;
-        [textfield setBackgroundColor:[UIColor whiteColor]];
-        
-        for (UIView *view in _searchbar.subviews) {
-            
-            for (UIView * subviews in view.subviews) {
-                
-            if ( [ subviews isKindOfClass:NSClassFromString(@"UISearchBarBackground").class]) {
-                
-                subviews.alpha = 0;
+        _searchbar.delegate = self;
+        [_searchbar setImage:[UIImage imageNamed:@"小搜索"]forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
+
+        UITextField *textfield;
+       if (@available(iOS 13.0, *)) {
+       // 针对 13.0 以上的iOS系统进行处理
+            NSUInteger numViews = [_searchbar.subviews count];
+            for(int i = 0; i < numViews; i++) {
+                if([[_searchbar.subviews objectAtIndex:i] isKindOfClass:[UITextField class]]) {
+                    textfield = [_searchbar.subviews objectAtIndex:i];
                 }
             }
-        }
+        }else {
+        // 针对 13.0 以下的iOS系统进行处理
+            textfield = [_searchbar valueForKey:@"_searchField"];
+       }
+       textfield.borderStyle = UITextBorderStyleNone;
+       [textfield setBackgroundColor:[UIColor whiteColor]];
+       for (UIView *view in _searchbar.subviews) {
+           for (UIView * subviews in view.subviews) {
+               if ( [ subviews isKindOfClass:NSClassFromString(@"UISearchBarBackground").class]) {
+                   
+                   subviews.alpha = 0;
+               }
+           }
+       }
         
         [[UISearchBar appearance] setSearchFieldBackgroundImage:[self searchFieldBackgroundImage] forState:UIControlStateNormal];
-        UITextField *txfSearchField = [_searchbar valueForKey:@"_searchField"];
-        [txfSearchField setDefaultTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.5]}];
-        
+        [textfield setDefaultTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.5]}];
         _searchbar.searchTextPositionAdjustment = UIOffsetMake(7, 0);
-        
-        textfield.layer.cornerRadius = 14;
-        textfield.layer.masksToBounds = YES;
-        [textfield setValue: [UIColor colorWithHexString:@"#949494"] forKeyPath:@"_placeholderLabel.textColor"];
-        
-        [textfield setValue:[UIFont boldSystemFontOfSize:12]forKeyPath:@"_placeholderLabel.font"];
-        
-        [_searchbar setImage:[UIImage imageNamed:@"小搜索"]forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
-        _searchbar.delegate = self;
-        
-        _searchbar.showsBookmarkButton = NO;
-        
-        if ([[UIDevice currentDevice] systemVersion].doubleValue >= 11.0) {
-            
-            textfield.frame = CGRectMake(12, 8, _searchbar.width, 28);
-            
-        }else{
-            
-            textfield.frame = CGRectMake(0, 8, _searchbar.width, 28);
-            
-            [self setLeftPlaceholder];
-        }
-        
-        
+
     }
-    
     return _searchbar;
-    
 }
 
--(void)shareLinkResult:(BOOL)result AndCancel:(BOOL)cancel
-{
+-(void)shareLinkResult:(BOOL)result AndCancel:(BOOL)cancel{
     self.tabBarController.tabBar.hidden = NO;
-    
     if (cancel) {
-        
         return;
     }
-
     if (result) {
- 
-        
-        [SignUntility shareArticlecallback:^(SucceedModel *response, FGError *error) {
-            
+        [SignUntility shareArticlecallback:^(SucceedModel *response, FGError *error){
             if (!error) {
-                
                 NSString *LabelText;
                 if (response.pearl.integerValue == 0) {
-                    
                     LabelText = response.shareFlash;
-                    
                 }else{
-                    
                     LabelText = [NSString stringWithFormat:@"恭喜你+%@糖果",response.pearl];
                 }
-                
                 [ShowStateView showStateViewTitle:LabelText StateType:StateCenter autoClear:YES AutoclearClearTimer:2];
             }else{
-                
                 [MBManager showBriefAlert:error.descriptionStr];
-                
             }
-            
         }];
-        
-        
-        
-    }else
-    {
-        
+    }else{
         [MBManager showBriefAlert:@"分享失败"];
         
     }

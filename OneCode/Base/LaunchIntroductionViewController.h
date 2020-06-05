@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define kScreen_height  [[UIScreen mainScreen] bounds].size.height
-#define kScreen_width   [[UIScreen mainScreen] bounds].size.width
-
-@interface LaunchIntroductionView : UIView
+@interface LaunchIntroductionViewController : UIViewController
 /**
  *  选中page的指示器颜色，默认白色
  */
@@ -20,6 +17,10 @@
  *  其他状态下的指示器的颜色，默认
  */
 @property (nonatomic, strong) UIColor *nomalColor;
+/**
+*  两个window.
+*/
+@property (nonatomic, strong, readonly) UIWindow* window;
 
 /**
  *  带按钮的引导页
@@ -30,6 +31,6 @@
  *
  *  @return LaunchIntroductionView对象
  */
-+ (instancetype)sharedWithStoryboard:(NSString *)storyboardName images:(NSArray *)imageNames buttonImage:(NSString *)buttonImageName buttonFrame:(CGRect)frame;
++ (instancetype)sharedWithStoryboard:(NSString *)storyboardName images:(NSArray *)imageNames;
 
 @end

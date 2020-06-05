@@ -13,58 +13,31 @@
 
 @interface SignViewController ()
 @property (weak, nonatomic) IBOutlet UIView *showView;
-
 @property(nonatomic,strong)NSMutableArray * SpeatorArr;
-
 @property(nonatomic,strong)NSMutableArray * ClickArr;
-
 @property(nonatomic,assign) NSInteger Select;
-
 @property (nonatomic,strong)UIImageView * ShowStateImg;
-
 @property (nonatomic,strong)UILabel * ShowLab;
-
-
-
 @end
 
 @implementation SignViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.SpeatorArr = [NSMutableArray array];
-    
     self.ClickArr = [NSMutableArray array];
-
     self.view.backgroundColor = [[UIColor colorWithHexString:@"#000000"]colorWithAlphaComponent:0.4];
-    
     self.Select = 2;
     [self initUI];
     [self.view addSubview:self.ShowStateImg];
-    
-    // Do any additional setup after loading the view from its nib.
 }
-
-
-
-
-
 -(void)initUI{
-    
     for (int i = 0; i< 7; i++) {
-        
-        
         UIButton * cornerbtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    
         UIView  * speatorview = [UIView new];
-        
         UILabel * bottomLab = [[UILabel alloc]init];
-        
         [self.showView addSubview:cornerbtn];
-        
         [self.showView addSubview:speatorview];
-
         [self.showView addSubview:bottomLab];
         
         [self.ClickArr addObject:cornerbtn];
@@ -128,10 +101,8 @@
 }
 
 
-- (void)loginChangeUI:(SignResponseModel *)response
-{
+- (void)loginChangeUI:(SignResponseModel *)response{
     self.stateModel = response;
-    
     [self changeValve];
     
 }
@@ -139,31 +110,18 @@
 -(void)changeValve{
     
     for (int i = 0; i < self.stateModel.sginNum; i++) {
-        
         UIButton * cornerbtn = self.ClickArr[i];
-        
         UILabel * speatorlab =   self.SpeatorArr[i];
- 
         speatorlab.backgroundColor = [UIColor colorWithHexString:@"#F98040"];
-        
         cornerbtn.layer.borderColor = [UIColor colorWithHexString:@"#F98040"].CGColor;
-        
         [cornerbtn setTitleColor:[UIColor colorWithHexString:@"FFFFFF"] forState:UIControlStateNormal];
-        
         [cornerbtn setBackgroundColor:[UIColor colorWithHexString:@"#F98040"]];
       }
-    
     if ( !self.stateModel.todaySignIn) {
-        
         UIButton * cornerbtn = self.ClickArr[self.stateModel.sginNum];
-
         [cornerbtn setTitleColor:[UIColor colorWithHexString:@"#F98040"] forState:UIControlStateNormal];
-        
         [cornerbtn setBackgroundColor:[UIColor colorWithHexString:@"#FFFFFF"]];
-        
         cornerbtn.layer.borderColor = [UIColor colorWithHexString:@"#F98040"].CGColor;
-
-        
     }
     
 }
@@ -174,25 +132,17 @@
     sender.userInteractionEnabled = NO;
     
     if (!self.stateModel.todaySignIn) {
-        
         UIButton * btn =  self.ClickArr[self.stateModel.sginNum];
-        
             [SignUntility SignClickcallback:^(SucceedModel *response, FGError *error) {
-                
                 sender.userInteractionEnabled = YES;
-                
                 if (!error) {
-                    
                     btn.backgroundColor = [UIColor colorWithHexString:@"#F98040"];
                     
                     [btn setTitleColor:[UIColor colorWithHexString:@"FFFFFF"] forState:UIControlStateNormal];
-                    
-                    
                     [self.showView removeFromSuperview];
                     
                     NSString * LabelText;
                     if (!response.signIn ) {
-                        
                         LabelText = response.shareArticle;
                         
                     }else{
@@ -230,54 +180,24 @@
                 }
                 
             }];
-        }else
-        {
-            
+        }else{
             [MBManager showBriefAlert:@"当天您已经签到过了"];
-            
         }
-    }else
-    {
-        
-        
+    }else  {
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
         BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
-        
         [self presentViewController:vc animated:YES completion:nil];
-        
-
-        
     }
-    
-    
 }
-
-
-
-
--(UIImageView *)ShowStateImg
-{
-    
-    
+-(UIImageView *)ShowStateImg{
     if(!_ShowStateImg){
-
         _ShowStateImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"签到成功"]];
-        
         _ShowStateImg.frame = CGRectMake(48 , 203, 280, 279);
-        
         self.ShowLab = [[UILabel alloc]initWithFrame:CGRectMake(60, 198, 169, 45)];
-        
-        
         self.ShowLab.preferredMaxLayoutWidth = 169;
-        
         self.ShowLab.numberOfLines = 2;
-        
         [_ShowStateImg addSubview:self.ShowLab];
-        
         _ShowStateImg.hidden = YES;
-        
-    
     }
     
     return _ShowStateImg;

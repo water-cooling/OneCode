@@ -13,41 +13,25 @@
 #import <UShareUI/UShareUI.h>
 
 @interface ShareViewController ()
-
-
 @end
-
 @implementation ShareViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [[UIColor colorWithHexString:@"#000000"]colorWithAlphaComponent:0.4];
-    
- 
 }
 - (IBAction)DIsmiss:(UIControl *)sender {
-    
     [self.delegate shareLinkResult:NO AndCancel:YES];
-
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 - (IBAction)CancelClick:(UIButton *)sender {
-    
-    
     [self.delegate shareLinkResult:NO AndCancel:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
 - (IBAction)UIClick:(UIButton *)sender {
-
-    
     switch (sender.tag) {
-        case 100:
-        {
-            
+        case 100:{
             if ([[UMSocialManager defaultManager]isInstall:UMSocialPlatformType_WechatSession]) {
                 
                 [self shareMusicToPlatformType:UMSocialPlatformType_WechatSession];
@@ -68,26 +52,16 @@
                 
                 [self shareMusicToPlatformType:UMSocialPlatformType_WechatTimeLine];
                 
-            }else
-                
-            {
-                
+            }else{
                 [MBManager showBriefAlert:@"请安装微信"];
             }
-            
         }
             break;
-            
         case 102:{
-            
-            
-            if ([[UMSocialManager defaultManager]isInstall:UMSocialPlatformType_QQ])
-            {
+            if ([[UMSocialManager defaultManager]isInstall:UMSocialPlatformType_QQ]){
                 [self shareMusicToPlatformType:UMSocialPlatformType_QQ ];
                 
-            }else
-                
-            {
+            }else{
                 
                 [MBManager showBriefAlert:@"请安装QQ"];
             }

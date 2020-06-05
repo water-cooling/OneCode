@@ -16,7 +16,7 @@
 
 @implementation moneyDetailResponseModel
 
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"rows" : @"moneyDetailModel",
              
@@ -35,8 +35,7 @@
 
 
 @implementation moneyDetailModels
-
-+ (NSDictionary *)objectClassInArray{
++ (NSDictionary *)mj_objectClassInArray{
     return @{
              @"messages" : @"MessageModel",
              

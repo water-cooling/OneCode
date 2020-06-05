@@ -18,23 +18,15 @@
 #import "UserUtility.h"
 @interface HomeViewController ()<UISearchBarDelegate,HistoryDidSelectDelegate,FGScrollviewDelegate>
 @property (nonatomic,strong)UISearchBar * searchbar;
-
 @property (nonatomic,strong)UIButton * backBtn;
-
 @property(nonatomic,strong)FGContentView * contentView;
-
 @property(nonatomic,strong)HomeNewsController * CurrentVc;
-
 @property(nonatomic,strong)FGScrollSegmentView *segmentView;
-
 @property(nonatomic,strong)SeachHistoryView * history;
 @property(nonatomic,strong)NSMutableArray * dataSource;
 @property(nonatomic,assign)NSInteger  SelectIndex;
 @property(nonatomic,strong)NSArray * TitleArr;
-
 @property(nonatomic,assign)BOOL  HistoryUp;
-
-
 @property(nonatomic,strong)SignViewController * sign;
 
 @end
@@ -43,17 +35,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.view addSubview:self.segmentView];
-    
     [self.view addSubview:self.contentView];
-    
     UIView * view = [[UIView alloc]init];
-
      self.backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     self.backBtn.frame = CGRectMake(0, 13, 10, 15);
-    
     self.backBtn.hidden = YES;
     [self.backBtn setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
     [self.backBtn addTarget:self action:@selector(BackClick) forControlEvents:UIControlEventTouchUpInside];
@@ -62,7 +48,6 @@
     self.searchbar.frame = CGRectMake(0, 8, UISCREENWIDTH-100 ,28);
     self.searchbar.clipsToBounds = YES;
     [view addSubview:self.searchbar];
-
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"搜索" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -72,55 +57,34 @@
     self.navigationItem.titleView = view;
 
     self.navigationItem.titleView.frame = CGRectMake(0, 0, UISCREENWIDTH-30, 44);
- 
     button.frame =  CGRectMake(self.navigationItem.titleView.width - 35, 13, 35 , 16);
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(login) name:LoginIn object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(GetDataForsignNum) name:LoginIn object:nil];
     [self LoadingSignCount];
  
 }
-
--(void)login{
-    
+//用户已经签到次数
+-(void)GetDataForsignNum{
     [SignUntility GetSignTimescallback:^(SignResponseModel *response, FGError *error) {
-        
         if (!error) {
-            
-            
             [self.sign loginChangeUI:response];
-
-                
-        }else
-        {
-            
+        }else{
             [MBManager showBriefAlert:error.descriptionStr];
-            
         }
-        
-        
     }];
     
 }
 
-- (void)DeleteHistoryData
-{
+- (void)DeleteHistoryData{
     if (self.dataSource.count) {
-        
         [self.dataSource removeAllObjects];
-        
         self.history.dataSource = self.dataSource;
-        
         [NSKeyedArchiver archiveRootObject:self.dataSource toFile:KHistorySearchPath];
-        
     }
 }
 
 -(void)LoadingSignCount{
-    
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    
     NSDate *now = [NSDate date];
-    
     NSDate *agoDate = [userDefault objectForKey:@"nowDate"];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -135,25 +99,17 @@
         
         return;
     }
-    
     if (![[NSUserDefaults standardUserDefaults]objectForKey:@"readArticleNum"]) {
         
         [[NSUserDefaults standardUserDefaults]setObject:@(5) forKey:@"readArticleNum"];
-        
     }
-    
+    //每天签到获得的糖果列表
     [SignUntility GetSignListcallback:^(SignListdataModel *data, FGError *error) {
-        
         if (!error) {
-            
             if ([UserUtility hasLogin]) {
-                
                 [self LoadingSignDay:data];
-
-            }else
-            {
+            }else{
                 SignViewController * sign = [[SignViewController alloc]initWithNibName:@"SignViewController" bundle:nil];
-                
                 sign.ListModel = data;
                 
                 sign.definesPresentationContext = YES;
@@ -176,54 +132,31 @@
         }
         
     }];
-    
-
-
 }
-
+//用户已经签到次数
 -(void)LoadingSignDay:(SignListdataModel * )model{
-    
     [SignUntility GetSignTimescallback:^(SignResponseModel *response, FGError *error) {
-        
         if (!error) {
-            
-            
             SignViewController * sign = [[SignViewController alloc]initWithNibName:@"SignViewController" bundle:nil];
-            
             sign.ListModel = model;
-            
             sign.stateModel = response;
-            
             sign.definesPresentationContext = YES;
-            
             sign.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-                
             [self.navigationController  presentViewController:sign animated:NO completion:nil];
-            
-      
-        }else
-        {
-            
+        }else{
             [MBManager showBriefAlert:error.descriptionStr];
-            
         }
-        
-        
     }];
   
     
 }
 
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.searchbar resignFirstResponder];
-    
 }
 
--(NSInteger)numberOfChildViewControllers
-{
+-(NSInteger)numberOfChildViewControllers{
     
     return self.TitleArr.count;
     
@@ -233,8 +166,6 @@
 
 
 -(UIViewController<FGScrollPageViewChildVcDelegate> *)childViewController:(UIViewController<FGScrollPageViewChildVcDelegate> *)reuseViewController forIndex:(NSInteger)index{
-    
-    
     HomeNewsController *childVc = (HomeNewsController *)reuseViewController;
     
     if (childVc == nil) {
@@ -248,19 +179,14 @@
     
 }
 
-- (void)scrollPageController:(UIViewController *)scrollPageController childViewControllWillAppear:(UIViewController *)childViewController forIndex:(NSInteger)index
-{
+- (void)scrollPageController:(UIViewController *)scrollPageController childViewControllWillAppear:(UIViewController *)childViewController forIndex:(NSInteger)index{
     self.SelectIndex = index;
-
     HomeNewsController *childVc = (HomeNewsController *)childViewController;
-    
     childVc.SelectIndex = self.SelectIndex;
     
 }
 
-- (void)scrollPageController:(UIViewController *)scrollPageController childViewControllDidAppear:(UIViewController *)childViewController forIndex:(NSInteger)index
-
-{
+- (void)scrollPageController:(UIViewController *)scrollPageController childViewControllDidAppear:(UIViewController *)childViewController forIndex:(NSInteger)index{
     
     [self.searchbar resignFirstResponder];
     self.searchbar.text = @"";
@@ -400,22 +326,15 @@
 
 
 -(void)seachClick{
-    
     [self.searchbar resignFirstResponder];
-
     if (self.searchbar.text == nil || [self.searchbar.text length] <= 0) {
-        
         [MBManager showBriefAlert:@"请输入搜索内容"];
-        
         return;
         
     }
     for (int i = 0; i < self.dataSource.count; i++) {
-        
         if ([_dataSource[i] isEqualToString:self.searchbar.text]) {
-            
             [_dataSource removeObjectAtIndex:i];
-            
             break;
         }
     }
@@ -437,70 +356,49 @@
 {
     if (!_TitleArr) {
         
-        _TitleArr = [NSArray arrayWithObjects:@"资讯",@"号外",@"行情",@"专栏",@"政策",nil];
+        _TitleArr = [NSArray arrayWithObjects:@"推荐",@"咨询",@"号外",@"行情",@"专栏",@"政策",nil];
     }
     
     return _TitleArr;
     
 }
-
--(UISearchBar *)searchbar{
-    
-    if (_searchbar == nil) {
-        
-        _searchbar = [[UISearchBar alloc]init];
+-(UISearchBar *)searchBar{
+    if (!_searchbar) {
+        _searchbar =[[UISearchBar alloc]init];
         _searchbar.placeholder = @"搜索关键字";
-        UITextField *textfield = [_searchbar valueForKey:@"searchField"];
-        textfield.borderStyle = UITextBorderStyleNone;
-        [textfield setBackgroundColor:[UIColor whiteColor]];
-        
-        for (UIView *view in _searchbar.subviews) {
-            
-            for (UIView * subviews in view.subviews) {
-                
-                if ( [ subviews isKindOfClass:NSClassFromString(@"UISearchBarBackground").class]) {
-                    
-                    subviews.alpha = 0;
+        _searchbar.delegate = self;
+        [_searchbar setImage:[UIImage imageNamed:@"小搜索"]forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
+
+        UITextField *textfield;
+       if (@available(iOS 13.0, *)) {
+       // 针对 13.0 以上的iOS系统进行处理
+            NSUInteger numViews = [_searchbar.subviews count];
+            for(int i = 0; i < numViews; i++) {
+                if([[_searchbar.subviews objectAtIndex:i] isKindOfClass:[UITextField class]]) {
+                    textfield = [_searchbar.subviews objectAtIndex:i];
                 }
             }
-        }
-        
+        }else {
+        // 针对 13.0 以下的iOS系统进行处理
+            textfield = [_searchbar valueForKey:@"_searchField"];
+       }
+       textfield.borderStyle = UITextBorderStyleNone;
+       [textfield setBackgroundColor:[UIColor whiteColor]];
+       for (UIView *view in _searchbar.subviews) {
+           for (UIView * subviews in view.subviews) {
+               if ( [ subviews isKindOfClass:NSClassFromString(@"UISearchBarBackground").class]) {
+                   
+                   subviews.alpha = 0;
+               }
+           }
+       }
         [[UISearchBar appearance] setSearchFieldBackgroundImage:[self searchFieldBackgroundImage] forState:UIControlStateNormal];
-        UITextField *txfSearchField = [_searchbar valueForKey:@"_searchField"];
-        [txfSearchField setDefaultTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.5]}];
-        
+        [textfield setDefaultTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.5]}];
         _searchbar.searchTextPositionAdjustment = UIOffsetMake(7, 0);
-        
-        textfield.layer.cornerRadius = 14;
-        textfield.layer.masksToBounds = YES;
-        [textfield setValue: [UIColor colorWithHexString:@"#949494"] forKeyPath:@"_placeholderLabel.textColor"];
-        
-        [textfield setValue:[UIFont boldSystemFontOfSize:12]forKeyPath:@"_placeholderLabel.font"];
-        
-        [_searchbar setImage:[UIImage imageNamed:@"小搜索"]forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
-        _searchbar.delegate = self;
-        
-        _searchbar.showsBookmarkButton = NO;
-        
-        if ([[UIDevice currentDevice] systemVersion].doubleValue >= 11.0) {
-            
-            textfield.frame = CGRectMake(12, 8, _searchbar.width, 28);
-            
-        }else{
-            
-            textfield.frame = CGRectMake(0, 8, _searchbar.width, 28);
-            
-            [self setLeftPlaceholder];
-        }
-        
-        
+
     }
-    
     return _searchbar;
-    
 }
-
-
 - (UIImage*)searchFieldBackgroundImage {
     UIColor*color = [UIColor whiteColor];
     CGFloat cornerRadius = 5;
@@ -535,14 +433,10 @@
 }
 
 
--(SeachHistoryView *)history
-{
-    
+-(SeachHistoryView *)history{
     if (!_history) {
-        
         _history  = [[SeachHistoryView alloc]initWithFrame:self.view.bounds];
         _history.dataSource = self.dataSource;
-        
         _history.delegate = self;
         [self.view addSubview:_history];
     }
@@ -551,14 +445,10 @@
     
 }
 
-- (NSMutableArray *)dataSource
-{
+- (NSMutableArray *)dataSource{
     if (!_dataSource) {
-        
         _dataSource = [NSKeyedUnarchiver unarchiveObjectWithFile:KHistorySearchPath];
         if (!_dataSource) {
-            
-            
             _dataSource = [NSMutableArray array];
         }
     }

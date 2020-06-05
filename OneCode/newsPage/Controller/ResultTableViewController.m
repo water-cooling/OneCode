@@ -46,30 +46,19 @@
     button.frame =  CGRectMake(view.width - 35, 13, 35 , 16);
     [button addTarget:self action:@selector(seachClick) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:button];
-    
     self.navigationItem.titleView = view;
-    
     self.searchbar.text = self.seachStr;
-    
     UIView * ShowView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, UISCREENWIDTH, 34)];
-    
-    ShowView.backgroundColor = [[UIColor colorWithHexString:@"#F98040"]colorWithAlphaComponent:0.2];
+    ShowView.backgroundColor = [themeColor colorWithAlphaComponent:0.2];
      self.CountLab = [[UILabel alloc]initWithFrame:CGRectMake(UISCREENWIDTH/2 - 106/2, 11, 106, 12)];
-    
     self.CountLab.textColor = [UIColor colorWithHexString:@"#333333"];
     self.CountLab.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:12];
     self.CountLab.text  =   @"";
     [ShowView addSubview:self.CountLab];
-    
     self.tableView.tableHeaderView = ShowView;
-    
     [self.tableView registerNib:[UINib nibWithNibName:@"ResultTableViewCell" bundle:nil] forCellReuseIdentifier:@"ResultTableViewCell"];
-
     [self loadingFastNewsDataLoc:self.DownIndex count:10 tTitleLike:self.seachStr refresh:YES];
-
-
 self.tableView.tableFooterView = [UIView new];
-
 __weak typeof(self) weakself = self;
 self.tableView.estimatedRowHeight = 0;
 self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
@@ -357,64 +346,43 @@ self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:
     });
     
 }
-
-
-
--(UISearchBar *)searchbar{
-    
-    if (_searchbar == nil) {
-        
-        _searchbar = [[UISearchBar alloc]init];
+-(UISearchBar *)searchBar{
+    if (!_searchbar) {
+        _searchbar =[[UISearchBar alloc]init];
         _searchbar.placeholder = @"搜索关键字";
-        UITextField *textfield = [_searchbar valueForKey:@"searchField"];
-        textfield.borderStyle = UITextBorderStyleNone;
-        [textfield setBackgroundColor:[UIColor whiteColor]];
-        
-        for (UIView *view in _searchbar.subviews) {
-            
-            for (UIView * subviews in view.subviews) {
-                
-                if ( [ subviews isKindOfClass:NSClassFromString(@"UISearchBarBackground").class]) {
-                    
-                    subviews.alpha = 0;
+        _searchbar.delegate = self;
+        [_searchbar setImage:[UIImage imageNamed:@"小搜索"]forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
+
+        UITextField *textfield;
+       if (@available(iOS 13.0, *)) {
+       // 针对 13.0 以上的iOS系统进行处理
+            NSUInteger numViews = [_searchbar.subviews count];
+            for(int i = 0; i < numViews; i++) {
+                if([[_searchbar.subviews objectAtIndex:i] isKindOfClass:[UITextField class]]) {
+                    textfield = [_searchbar.subviews objectAtIndex:i];
                 }
             }
-        }
+        }else {
+        // 针对 13.0 以下的iOS系统进行处理
+            textfield = [_searchbar valueForKey:@"_searchField"];
+       }
+       textfield.borderStyle = UITextBorderStyleNone;
+       [textfield setBackgroundColor:[UIColor whiteColor]];
+       for (UIView *view in _searchbar.subviews) {
+           for (UIView * subviews in view.subviews) {
+               if ( [ subviews isKindOfClass:NSClassFromString(@"UISearchBarBackground").class]) {
+                   
+                   subviews.alpha = 0;
+               }
+           }
+       }
         [[UISearchBar appearance] setSearchFieldBackgroundImage:[self searchFieldBackgroundImage] forState:UIControlStateNormal];
-        UITextField *txfSearchField = [_searchbar valueForKey:@"_searchField"];
-        [txfSearchField setDefaultTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.5]}];
-        
+        [textfield setDefaultTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.5]}];
         _searchbar.searchTextPositionAdjustment = UIOffsetMake(7, 0);
-        
-        textfield.layer.cornerRadius = 14;
-        textfield.layer.masksToBounds = YES;
-        [textfield setValue: [UIColor colorWithHexString:@"#949494"] forKeyPath:@"_placeholderLabel.textColor"];
-        
-        [textfield setValue:[UIFont boldSystemFontOfSize:12]forKeyPath:@"_placeholderLabel.font"];
-        
-        [_searchbar setImage:[UIImage imageNamed:@"小搜索"]forSearchBarIcon:UISearchBarIconBookmark state:UIControlStateNormal];
-        _searchbar.delegate = self;
-        
-        _searchbar.showsBookmarkButton = NO;
-        
-        if ([[UIDevice currentDevice] systemVersion].doubleValue >= 11.0) {
-            
-            textfield.frame = CGRectMake(12, 8, _searchbar.width, 28);
-            
-        }else{
-            
-            textfield.frame = CGRectMake(0, 8, _searchbar.width, 28);
-            
-            [self setLeftPlaceholder];
-        }
-        
-        
-    }
-    
-    return _searchbar;
-    
-}
 
+    }
+    return _searchbar;
+}
 - (UIImage*)searchFieldBackgroundImage {
     UIColor*color = [UIColor whiteColor];
     CGFloat cornerRadius = 5;
