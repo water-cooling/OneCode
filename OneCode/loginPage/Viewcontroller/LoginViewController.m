@@ -47,16 +47,17 @@
 
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    
-    
+
     if (textField.secureTextEntry)
     {
         [textField insertText:self.PwdTextField.text];
     }
     
-    
 }
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
 
 -(void)ShowPwd:(UIButton *)sender{
     

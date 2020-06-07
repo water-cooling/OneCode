@@ -40,7 +40,7 @@
     [self.scrollview addSubview:self.BakcImage];
     
     
-    self.QrCodeImg = [[UIImageView alloc]initWithFrame:CGRectMake(Recommand.size.width/2-65, Recommand.size.height-170, 130, 130)];
+    self.QrCodeImg = [[UIImageView alloc]initWithFrame:CGRectMake(Recommand.size.width/2-70, Recommand.size.height-53, 130, 130)];
     
     [self.BakcImage addSubview:self.QrCodeImg];
     
