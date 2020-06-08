@@ -247,77 +247,41 @@
 
 
 
--(void)MoreBtnClick:(NSInteger)SelectIndex btnState:(UIButton *)Sender
-{
-    
+-(void)MoreBtnClick:(NSInteger)SelectIndex btnState:(UIButton *)Sender{
     FastNewListModel * model = self.response.rows[SelectIndex];
-
     model.expand = YES;
-    
     [self.model UpdateSpaceLabelAttriStr:[model.briefIntro stringByReplacingOccurrencesOfString:@" " withString:@""] HeightwithSpeace:5 withFont:[UIFont fontWithName:@"PingFang-SC-Regular" size:14] withWidth:UISCREENWIDTH - 51 CacheIndexPath:[NSIndexPath indexPathForRow:SelectIndex inSection:0]];
-        
-  
          [self.Newstableview reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:SelectIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-    
-    
 }
 
 
--(void)ShareBtnClick:(NSInteger)SelectIndex
-{
-
-    
-    
+-(void)ShareBtnClick:(NSInteger)SelectIndex{
     __weak typeof(self) weakself = self;
-    
-    
     FastNewListModel * fastmodel = self.response.rows[SelectIndex];
-
-    
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
         FastRecommandViewController *modelVC = [story instantiateViewControllerWithIdentifier:@"FastRecommandViewController"];
-        
         modelVC.delegate = self;
-        
         modelVC.definesPresentationContext = YES;
-        
         weakself.tabBarController.tabBar.hidden = YES;
-        
         modelVC.ShareContent = [fastmodel.briefIntro stringByReplacingOccurrencesOfString:@" " withString:@""];
-
         modelVC.ShareTime = fastmodel.addTimeStr;
-        
         modelVC.ShareTitle = fastmodel.tTitle;
-        
-        
         modelVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        
         [weakself presentViewController:modelVC animated:YES completion:nil];
     });
     
 }
 
--(UITableView *)Newstableview
-{
-    
+-(UITableView *)Newstableview{
     if (!_Newstableview) {
-        
         _Newstableview = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        
         _Newstableview.dataSource = self;
-        
         _Newstableview.delegate = self;
-        
         _Newstableview.separatorStyle = UITableViewCellSelectionStyleNone;
-        
         [self.view addSubview:_Newstableview];
     }
-    
     return _Newstableview;
-    
 }
 -(UISearchBar *)searchbar{
     if (!_searchbar) {

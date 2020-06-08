@@ -44,7 +44,6 @@
 		27BEA36124854F930075574C /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA2C124854F8F0075574C /* ShareViewController.m */; };
 		27BEA36224854F930075574C /* MySweetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA2C224854F8F0075574C /* MySweetTableViewController.m */; };
 		27BEA36324854F930075574C /* OwnShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA2C524854F8F0075574C /* OwnShareViewController.m */; };
-		27BEA36424854F930075574C /* OwnShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BEA2C624854F8F0075574C /* OwnShareViewController.xib */; };
 		27BEA36524854F930075574C /* EditIphoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA2C724854F8F0075574C /* EditIphoneViewController.m */; };
 		27BEA36624854F930075574C /* ownShowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA2CA24854F8F0075574C /* ownShowModel.m */; };
 		27BEA36724854F930075574C /* AboutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BEA2CE24854F8F0075574C /* AboutModel.m */; };
@@ -188,7 +187,6 @@
 		27BEA2C324854F8F0075574C /* OwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnViewController.h; sourceTree = "<group>"; };
 		27BEA2C424854F8F0075574C /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		27BEA2C524854F8F0075574C /* OwnShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnShareViewController.m; sourceTree = "<group>"; };
-		27BEA2C624854F8F0075574C /* OwnShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OwnShareViewController.xib; sourceTree = "<group>"; };
 		27BEA2C724854F8F0075574C /* EditIphoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditIphoneViewController.m; sourceTree = "<group>"; };
 		27BEA2C824854F8F0075574C /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		27BEA2CA24854F8F0075574C /* ownShowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ownShowModel.m; sourceTree = "<group>"; };
@@ -548,7 +546,6 @@
 				27BEA2C224854F8F0075574C /* MySweetTableViewController.m */,
 				27BEA2BE24854F8F0075574C /* OwnShareViewController.h */,
 				27BEA2C524854F8F0075574C /* OwnShareViewController.m */,
-				27BEA2C624854F8F0075574C /* OwnShareViewController.xib */,
 				27BEA2C324854F8F0075574C /* OwnViewController.h */,
 				27BEA2BB24854F8F0075574C /* OwnViewController.m */,
 				27BEA2C824854F8F0075574C /* ShareViewController.h */,
@@ -934,7 +931,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				27BEA25724854F6F0075574C /* LaunchScreen.storyboard in Resources */,
-				27BEA36424854F930075574C /* OwnShareViewController.xib in Resources */,
 				27BEA37624854F930075574C /* ShowCodeVC.xib in Resources */,
 				27BEA38024854F930075574C /* Main.storyboard in Resources */,
 				27BEA35F24854F930075574C /* ShareViewController.xib in Resources */,
@@ -1266,7 +1262,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = OneCode.Com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.zryltx;
 				PRODUCT_NAME = "一码";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1287,7 +1283,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = OneCode.Com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.zryltx;
 				PRODUCT_NAME = "一码";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

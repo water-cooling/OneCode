@@ -31,5 +31,6 @@
 
 -(UIImage *)addWatemarkTextAfteriOS7_WithImageQcode:(UIImage *)image;
 
++(UIImage *)createNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat) size;
 
 @end

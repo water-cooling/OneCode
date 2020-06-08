@@ -26,7 +26,6 @@
         // 针对13.0 以上的iOS系统进行处理
         [self setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
     }
-    [self setFakeNavigationBarCommonLeftButton];
     NSDictionary * dict=[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     self.navigationController.navigationBar.titleTextAttributes = dict;
 }
@@ -132,6 +131,7 @@
 
 -(void)turnToLogin{
     BaseNavigationController *loginNavi = [self.storyboard instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
+    loginNavi.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.navigationController presentViewController:loginNavi animated:YES completion:nil];
 }
 

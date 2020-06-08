@@ -37,26 +37,18 @@
     self.delegate = self;
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(Loginout) name:LoginOut object:nil];
-
-
-
     // Do any additional setup after loading the view.
 }
-
 -(void)Loginout{
-    
     [self setSelectedIndex:1];
-    
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
-    
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:vc animated:YES completion:nil];
     
 }
 
--(void)dealloc
-{
+-(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     
 }
@@ -67,26 +59,17 @@
 }
 
 -(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
-    
-    
     if (![viewController.tabBarItem.title isEqualToString:@"我的"]) {
-        
         return YES;
-        
     }
-    
-  
 if ([UserUtility hasLogin]) {
-        
         return YES;
-    
 }
     
     
 UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-
 BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
-
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
 [self presentViewController:vc animated:YES completion:nil];
 
     return NO;

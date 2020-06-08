@@ -80,29 +80,20 @@
 
 
 - (IBAction)SureBtn:(UIButton *)sender {
-
     [UserUtility verifyImageCodeID:self.codeID CodeValue:self.textfild.text callback:^(SucceedModel *succeed, FGError *error) {
-        
-        if (error == nil) {
-            
+                if (error == nil) {
             self.block(YES, self.codeID, self.textfild.text);
-            
             [self dismissViewControllerAnimated:YES completion:nil];
             
-        }else
-        {
-            
+        }else{
             self.WrongLab.hidden = NO;
             self.WrongLab.text = error.descriptionStr;
         }
         
     }];
-
 }
 - (IBAction)ValueChange:(UITextField *)sender {
-    
     if ([sender.text isEqualToString:@""]) {
-        
         self.WrongLab.hidden = YES;
     }
 }

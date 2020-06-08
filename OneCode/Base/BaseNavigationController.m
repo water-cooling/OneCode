@@ -21,9 +21,7 @@
     if (@available(iOS 13.0, *)) {
         self.modalPresentationStyle = UIModalPresentationFullScreen;
     }
-
 }
-
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
@@ -33,9 +31,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (navigationController.viewControllers.count == 1) {
         self.currentShowVC = Nil;
     } else {
@@ -43,19 +39,31 @@
     }
 }
 
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     if (gestureRecognizer == self.interactivePopGestureRecognizer) {
         return (self.currentShowVC == self.topViewController); //the most important
     }
     return YES;
 }
 
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    if (self.childViewControllers.count != 0) {
+-(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    //全部修改返回按钮,但是会失去右滑返回的手势
+    if (viewController.navigationItem.leftBarButtonItem ==nil && self.viewControllers.count >=1) {
         viewController.hidesBottomBarWhenPushed = YES;
+        [self setFakeNavigationBarCommonLeftButton];
+        [super pushViewController:viewController animated:animated];
     }
-    [super pushViewController:viewController animated:animated];
+}
+-(void)setFakeNavigationBarCommonLeftButton{
+    UIBarButtonItem *backItem =
+    [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"返回"]
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(backItemAction)];
+    backItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = backItem;
+}
+-(void)backItemAction{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

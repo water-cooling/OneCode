@@ -112,10 +112,10 @@
     for (int i = 0; i < self.stateModel.sginNum; i++) {
         UIButton * cornerbtn = self.ClickArr[i];
         UILabel * speatorlab =   self.SpeatorArr[i];
-        speatorlab.backgroundColor = [UIColor colorWithHexString:@"#F98040"];
-        cornerbtn.layer.borderColor = [UIColor colorWithHexString:@"#F98040"].CGColor;
+        speatorlab.backgroundColor = themeColor;
+        cornerbtn.layer.borderColor = themeColor.CGColor;
         [cornerbtn setTitleColor:[UIColor colorWithHexString:@"FFFFFF"] forState:UIControlStateNormal];
-        [cornerbtn setBackgroundColor:[UIColor colorWithHexString:@"#F98040"]];
+        [cornerbtn setBackgroundColor:themeColor];
       }
     if ( !self.stateModel.todaySignIn) {
         UIButton * cornerbtn = self.ClickArr[self.stateModel.sginNum];
@@ -160,7 +160,7 @@
                     [attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"PingFang-SC-Regular" size:17] range:NSMakeRange(0, LabelText.length)];
                     [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#1A1A1A"] range:NSMakeRange(0, LabelText.length)];
                     
-                    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#F98040"] range: [LabelText rangeOfString:btn.titleLabel.text]];
+                    [attributedString addAttribute:NSForegroundColorAttributeName value:themeColor range: [LabelText rangeOfString:btn.titleLabel.text]];
                     
                     self.ShowLab.attributedText = attributedString;
                     
@@ -172,13 +172,9 @@
                         
                     }];
                     
-                }else
-                {
-                    
+                }else{
                     [MBManager showBriefAlert:error.descriptionStr];
-                    
                 }
-                
             }];
         }else{
             [MBManager showBriefAlert:@"当天您已经签到过了"];

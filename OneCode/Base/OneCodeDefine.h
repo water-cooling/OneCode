@@ -50,7 +50,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 }\
 (isPhoneX);})
 
-
+#define TabbarSafeBottomMargin  (kDevice_iPhoneX ? 34.f : 0.f)
 #define SafeAreaTopHeight (kDevice_iPhoneX ? 88 : 64)
 
 //适配参数

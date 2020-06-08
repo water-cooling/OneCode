@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditPwdViewController : UIViewController
+@interface EditPwdViewController : BaseViewController
 
 @end

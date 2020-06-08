@@ -157,13 +157,8 @@
 }
 
 -(NSInteger)numberOfChildViewControllers{
-    
     return self.TitleArr.count;
-    
 }
-
-
-
 
 -(UIViewController<FGScrollPageViewChildVcDelegate> *)childViewController:(UIViewController<FGScrollPageViewChildVcDelegate> *)reuseViewController forIndex:(NSInteger)index{
     HomeNewsController *childVc = (HomeNewsController *)reuseViewController;
@@ -225,12 +220,7 @@
     }
     return _contentView;
 }
-
-
-
-
 #pragma mark SeachbarDelelgate
-
 
 - (void)BackClick{
     self.backBtn.hidden = YES;
@@ -240,25 +230,18 @@
 }
 
 
--(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
     if (searchBar.text == nil || [searchBar.text length] <= 0) {
-        
         [self.view bringSubviewToFront:self.history];
         self.backBtn.hidden = NO;
         self.searchbar.frame = CGRectMake(24, 8, 275, 28);
-        
     } else {
-        
         [self.view sendSubviewToBack:self.history];
         
     }
-    
-    
 }
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     
     if (searchBar.text == nil || [searchBar.text length] <= 0) {
         
@@ -352,17 +335,14 @@
 }
 
 
--(NSArray *)TitleArr
-{
+-(NSArray *)TitleArr{
     if (!_TitleArr) {
-        
-        _TitleArr = [NSArray arrayWithObjects:@"推荐",@"咨询",@"号外",@"行情",@"专栏",@"政策",nil];
+        _TitleArr = [NSArray arrayWithObjects:@"资讯",@"号外",@"行情",@"专栏",@"政策",nil];
     }
-    
     return _TitleArr;
     
 }
--(UISearchBar *)searchBar{
+-(UISearchBar *)searchbar{
     if (!_searchbar) {
         _searchbar =[[UISearchBar alloc]init];
         _searchbar.placeholder = @"搜索关键字";

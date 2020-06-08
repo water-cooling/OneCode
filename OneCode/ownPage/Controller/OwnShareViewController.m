@@ -13,89 +13,129 @@
 #import "AboutUntility.h"
 #import "RecommandModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import "UIImage+DrawImage.h"
 @interface OwnShareViewController ()
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
-
+@property (nonatomic, strong) NSMutableArray *shareArr;
 @property(nonatomic,strong) UIImageView * BakcImage;
 @property(nonatomic,strong) UIImageView * QrCodeImg;
 @property(nonatomic,strong) NSString * QrCodeStr;
-
-
 @end
 
 @implementation OwnShareViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIImage * Recommand = [UIImage imageNamed:@"Recommend"];
-    
-    self.BakcImage= [[UIImageView alloc]initWithImage:Recommand];
-    
-    self.BakcImage.frame = CGRectMake(0, 15,  Recommand.size.width,  Recommand.size.height+30);
-    
-    self.BakcImage.contentMode = UIViewContentModeScaleAspectFit;
-    
-    [self.scrollview addSubview:self.BakcImage];
-    
-    
-    self.QrCodeImg = [[UIImageView alloc]initWithFrame:CGRectMake(Recommand.size.width/2-70, Recommand.size.height-53, 130, 130)];
-    
-    [self.BakcImage addSubview:self.QrCodeImg];
-    
-    
-    self.BakcImage.contentMode = UIViewContentModeScaleAspectFill;
-    
-    self.BakcImage.frame = CGRectMake(0, 0,UISCREENWIDTH, Recommand.size.height);
-    
-    [self.scrollview addSubview:self.BakcImage];
-    
-    self.scrollview.contentSize = CGSizeMake(0, Recommand.size.height+30);
-    
     self.view.backgroundColor = [[UIColor colorWithHexString:@"#000000"]colorWithAlphaComponent:0.4];
-    
-    [self QRCodeMethod:self.shareLink];
+    [self initShareUI];
     
 }
 
-
-- (void)QRCodeMethod:(NSString *)qrCodeString {
-    
-    UIImage *qrcodeImg = [self createNonInterpolatedUIImageFormCIImage:[self createQRForString:qrCodeString] withSize:250.0f];
-    // ** 将生成的
-    self.QrCodeImg.image = qrcodeImg;
-}
 
 /*  ============================================================  */
 #pragma mark - InterpolatedUIImage
-- (UIImage *)createNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat) size {
-    CGRect extent = CGRectIntegral(image.extent);
-    CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
-    size_t width = CGRectGetWidth(extent) * scale;
-    size_t height = CGRectGetHeight(extent) * scale;
-    CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
-    CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CGImageRef bitmapImage = [context createCGImage:image fromRect:extent];
-    CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
-    CGContextScaleCTM(bitmapRef, scale, scale);
-    CGContextDrawImage(bitmapRef, extent, bitmapImage);
-    
-    CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
-    // Cleanup
-    CGContextRelease(bitmapRef);
-    CGImageRelease(bitmapImage);
-    return [UIImage imageWithCGImage:scaledImage];
-}
 
+-(void)initShareUI{
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(DIsmiss)];
+    [self.view addGestureRecognizer:tap];
+    UIImage * Recommand = [UIImage imageNamed:@"Recommend"];
+      self.BakcImage= [[UIImageView alloc]initWithImage:Recommand];
+      [self.view addSubview:self.BakcImage];
+      self.BakcImage.contentMode = UIViewContentModeScaleAspectFit;
+      [self.BakcImage mas_makeConstraints:^(MASConstraintMaker *make) {
+          make.top.equalTo(self.view).offset(72.5+SafeAreaTopHeight);
+          make.left.equalTo(self.view).offset(38);
+          make.right.equalTo(self.view).offset(-38);
+          make.height.mas_equalTo(400);
+      }];
+      self.QrCodeImg = [[UIImageView alloc]init];
+      [self.BakcImage addSubview:self.QrCodeImg];
+      [self.QrCodeImg mas_makeConstraints:^(MASConstraintMaker *make) {
+          make.left.equalTo(self.BakcImage).offset(79);
+          make.bottom.equalTo(self.BakcImage).offset(-11);
+          make.size.mas_equalTo(CGSizeMake(140, 140));
+      }];
+    [self QRCodeMethod:self.shareLink];
+    UIView *bottomView = [[UIView alloc]init];
+    [self.view addSubview:bottomView];
+    bottomView.backgroundColor = [UIColor whiteColor];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view).offset(-TabbarSafeBottomMargin);
+        make.height.mas_equalTo(152);
+    }];
+    UIButton *cancelbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelbtn setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelbtn setTitleColor:[UIColor blackColor] forState:0];
+    cancelbtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    cancelbtn.titleLabel.font = [UIFont systemFontOfSize:17];
+    [bottomView addSubview:cancelbtn];
+    [cancelbtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(bottomView);
+        make.height.mas_equalTo(49);
+    }];
+    [cancelbtn addTarget:self action:@selector(CancelClick) forControlEvents:UIControlEventTouchUpInside];
+    UIView * speatorView = [UIView new];
+    speatorView.backgroundColor = [UIColor colorWithHexString:@"#F3F3F3"];
+    [bottomView addSubview:speatorView];
+    [speatorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(bottomView);
+        make.bottom.equalTo(cancelbtn.mas_top);
+        make.height.mas_equalTo(1);
+    }];
+    
+    CGFloat speator = (UISCREENWIDTH- 48*self.shareArr.count)/(self.shareArr.count+1);
+    CGFloat width = 48;
+    for (int i = 0; i<self.shareArr.count; i++) {
+        UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        NSString *title;
+        NSString *icon;
+        switch ([self.shareArr[i]integerValue]) {
+            case UMSocialPlatformType_WechatSession:
+                title = @"微信";
+                icon = @"微信";
+                break;
+            case UMSocialPlatformType_WechatTimeLine:
+                title = @"朋友圈";
+                icon = @"朋友圈";
+                break;
+            case UMSocialPlatformType_QQ:
+                title = @"QQ";
+                icon = @"QQ";
+                break;
+            case UMSocialPlatformType_Qzone:
+                title = @"QQ空间";
+                icon = @"QQ空间";
+                    break;
+                case UMSocialPlatformType_Sina:
+                title = @"新浪";
+                icon = @"微博";
+                break;
+            default:
+                break;
+        }
+        [shareBtn setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
+        shareBtn.tag = [self.shareArr[i]integerValue];
+        [shareBtn addTarget:self action:@selector(UIClick:) forControlEvents:UIControlEventTouchUpInside];
+        [bottomView addSubview:shareBtn];
+       UILabel *titleDesLab = [UILabel new];
+        titleDesLab.text = title;
+        titleDesLab.textColor = [UIColor blackColor];
+        titleDesLab.font = [UIFont systemFontOfSize:11];
+        [bottomView addSubview:titleDesLab];
+        titleDesLab.textAlignment = NSTextAlignmentCenter;
+        shareBtn.frame = CGRectMake(speator+i*(speator+width), 15, width, width);
+        titleDesLab.frame = CGRectMake(shareBtn.x, CGRectGetMaxY(shareBtn.frame)+15, width, 11);
+    }
+}
+- (void)QRCodeMethod:(NSString *)qrCodeString {
+    UIImage *qrcodeImg = [UIImage createNonInterpolatedUIImageFormCIImage:[self createQRForString:qrCodeString] withSize:250.0f];
+    // ** 将生成的
+    self.QrCodeImg.image = qrcodeImg;
+}
 #pragma mark - QRCodeGenerator
 - (CIImage *)createQRForString:(NSString *)qrString {
     
     NSData *stringData = [qrString dataUsingEncoding:NSUTF8StringEncoding];
-    
     CIFilter *qrFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-    
     [qrFilter setValue:stringData forKey:@"inputMessage"];
     [qrFilter setValue:@"M" forKey:@"inputCorrectionLevel"];
     
@@ -135,7 +175,6 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     CGImageRef imageRef = CGImageCreate(imageWidth, imageHeight, 8, 32, bytesPerRow, colorSpace, kCGImageAlphaLast | kCGBitmapByteOrder32Little, dataProvider, NULL, true, kCGRenderingIntentDefault);
     CGDataProviderRelease(dataProvider);
     UIImage* resultUIImage = [UIImage imageWithCGImage:imageRef];
-    
     CGImageRelease(imageRef);
     CGContextRelease(context);
     CGColorSpaceRelease(colorSpace);
@@ -143,119 +182,75 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
 }
 
 
-- (IBAction)DIsmiss:(UIControl *)sender {
-    
-    [self.delegate shareLinkResult:NO AndCancel:YES];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
-- (IBAction)CancelClick:(UIButton *)sender {
-    
-    
+- (void)DIsmiss{
     [self.delegate shareLinkResult:NO AndCancel:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
-- (IBAction)UIClick:(UIButton *)sender {
-    
-    
+- (void)CancelClick {
+    [self.delegate shareLinkResult:NO AndCancel:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)UIClick:(UIButton *)sender {
     switch (sender.tag) {
-        case 100:
-        {
-            
+        case UMSocialPlatformType_WechatSession:{
             if ([[UMSocialManager defaultManager]isInstall:UMSocialPlatformType_WechatSession]) {
-                
                 [self shareMusicToPlatformType:UMSocialPlatformType_WechatSession];
                 
-            }else
-                
-            {
-                
+            }else{
                 [MBManager showBriefAlert:@"请安装微信"];
             }
         }
             break;
-            
-        case 101:
-        {
-            
+        case UMSocialPlatformType_WechatTimeLine:{
             if ([[UMSocialManager defaultManager]isInstall:UMSocialPlatformType_WechatTimeLine]) {
                 
                 [self shareMusicToPlatformType:UMSocialPlatformType_WechatTimeLine];
                 
-            }else
-                
-            {
-                
+            }else{
                 [MBManager showBriefAlert:@"请安装微信"];
             }
-            
         }
             break;
-            
-        case 102:{
-            
-            
-            if ([[UMSocialManager defaultManager]isInstall:UMSocialPlatformType_QQ])
-            {
+        case UMSocialPlatformType_QQ:{
+            if ([[UMSocialManager defaultManager]isInstall:UMSocialPlatformType_QQ]){
                 [self shareMusicToPlatformType:UMSocialPlatformType_QQ ];
-                
-            }else
-                
-            {
-                
+            }else{
                 [MBManager showBriefAlert:@"请安装QQ"];
             }
-            
         }
             break;
             
-        case 103:{
+        case UMSocialPlatformType_Qzone:{
             
             if ([[UMSocialManager defaultManager]isInstall:UMSocialPlatformType_QQ]) {
                 
                 [self shareMusicToPlatformType:UMSocialPlatformType_Qzone];
                 
-            }else
-                
-            {
-                
+            }else{
                 [MBManager showBriefAlert:@"请安装QQ"];
             }
-            
         }
             break;
-            
-        case 104:{
-            
+        case UMSocialPlatformType_Sina:{
             if ([[UMSocialManager defaultManager]isInstall:UMSocialPlatformType_Sina]) {
                 
                 [self shareMusicToPlatformType:UMSocialPlatformType_Sina];
-                
             }
             break;
         }
         default:
             break;
     }
-    
-    
 }
 
-- (void)shareMusicToPlatformType:(UMSocialPlatformType)platformType
-{
+- (void)shareMusicToPlatformType:(UMSocialPlatformType)platformType{
     //创建分享消息对象
     if (self.QrCodeStr) {
         
         UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
         
         UMShareImageObject * share = [UMShareImageObject new];
-        
-        
         share.shareImage = [self.BakcImage.image addWatemarkTextAfteriOS7_WithImageQcode:self.QrCodeImg.image];
-        
         messageObject.shareObject = share;
         //调用分享接口
         [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
@@ -285,20 +280,16 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     }
     
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(NSMutableArray *)shareArr{
+    if (!_shareArr) {
+        NSArray *ShareTypeArr = @[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina)];
+        _shareArr = [NSMutableArray array];
+        for (NSNumber *type in ShareTypeArr) {
+            if ([[UMSocialManager defaultManager]isInstall:type.integerValue]) {
+                [_shareArr addObject:type];
+            }
+        }
+    }
+    return _shareArr;
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 @end

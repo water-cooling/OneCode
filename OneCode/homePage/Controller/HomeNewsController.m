@@ -199,12 +199,8 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
 }
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (![UserUtility hasLogin]) {
-        
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
         BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
@@ -239,7 +235,6 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
                     break;
                 case 2:
                     web.title = @"行情详情";
-                    
                     break;
                 case 3:
                     web.title = @"币虎详情";
@@ -254,7 +249,6 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
                 default:
                     break;
             }
-            
             web.hidesBottomBarWhenPushed = YES;
             
             [self.navigationController pushViewController:web animated:YES];
@@ -269,9 +263,7 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
     }
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 105;
 }
@@ -283,14 +275,9 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     if (![UserUtility hasLogin]) {
-        
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
         BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
-        
         [self presentViewController:vc animated:YES completion:nil];
-        
-        
     }else{
     
     WebViewController * web = [[WebViewController alloc]init];

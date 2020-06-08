@@ -11,8 +11,7 @@
 @implementation UIImage (DrawImage)
 
 
-+ (UIImage *) imageWithColor:(UIColor *)color Size:(CGSize)size
-{
++ (UIImage *) imageWithColor:(UIColor *)color Size:(CGSize)size{
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -158,7 +157,8 @@
 
 +(UIImage *)addWatemarkTextAfteriOS7_WithLogoImageTimeText:(NSString *)TimeText TitleText:(NSString *)TitleText  contentText:(NSString *)contentText{
     
-    UIFont * titleFont = [UIFont fontWithName:@"PingFang-SC-Medium" size:18];
+    UIFont * titleFont = [UIFont fontWithName:@"PingFang-SC-Medium" size:15];
+    
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     
@@ -169,7 +169,7 @@
     
     NSDictionary * titledict = @{NSFontAttributeName:titleFont,NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#1A1A1A"],NSParagraphStyleAttributeName:paragraphStyle};
     
-    UIFont * contentFont = [UIFont fontWithName:@"PingFang-SC-Regular" size:15];
+    UIFont * contentFont = [UIFont fontWithName:@"PingFang-SC-Regular" size:12];
     
     NSMutableParagraphStyle *contentparagraphStyle = [[NSMutableParagraphStyle alloc] init];
     
@@ -177,18 +177,18 @@
     
     contentparagraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
     
-    
-    contentparagraphStyle.lineSpacing = 12;
+    contentparagraphStyle.lineSpacing = 10;
     
     NSDictionary * contentdict = @{NSFontAttributeName:contentFont,NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#333333"],NSParagraphStyleAttributeName:contentparagraphStyle};
     
-    CGSize titlesize = [TitleText boundingRectWithSize:CGSizeMake(UISCREENWIDTH-62,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:titledict context:nil].size;
+    CGSize titlesize = [TitleText boundingRectWithSize:CGSizeMake(UISCREENWIDTH-152,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:titledict context:nil].size;
     
-    CGSize contentsize = [contentText boundingRectWithSize:CGSizeMake(UISCREENWIDTH-62,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:contentdict context:nil].size;
+    CGSize contentsize = [contentText boundingRectWithSize:CGSizeMake(UISCREENWIDTH-152,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:contentdict context:nil].size;
     
     UIImage *image = [[UIImage imageNamed:@"shareImg"]resizableImageWithCapInsets:UIEdgeInsetsMake(187, 56, 133, 56) resizingMode:UIImageResizingModeStretch];
     
     int w =  UISCREENWIDTH-106;
+    
     
     int h = 343 + titlesize.height + contentsize.height;
     
@@ -196,18 +196,22 @@
     
     [image drawInRect:CGRectMake(0, 0, w, h)];
     
+    UIImage * IconImage =  [UIImage imageNamed:@"图标"];
+    
+    [IconImage drawInRect:CGRectMake(64, 26, 142, 36)];
+    
     UIImage * timeImage =  [UIImage imageNamed:@"时间"];
     
-    [timeImage drawInRect:CGRectMake(31, 170, 15, 15)];
+    [timeImage drawInRect:CGRectMake(31, 136, 15, 15)];
     
     
-    [TimeText drawInRect:CGRectMake(55, 170, w-50, 12) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Medium" size:11],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#010101"]}];
+    [TimeText drawInRect:CGRectMake(55, 136, w-50, 12) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Medium" size:11],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#010101"]}];
     
-    [TitleText drawInRect:CGRectMake(31, 199, w-62 , titlesize.height ) withAttributes:titledict];
+    [TitleText drawInRect:CGRectMake(23, 159, w-46 , titlesize.height ) withAttributes:titledict];
     
-    [contentText drawInRect:CGRectMake(34, 210 + titlesize.height, w-62,contentsize.height ) withAttributes:contentdict];
+    [contentText drawInRect:CGRectMake(23, 170 + titlesize.height, w-46,contentsize.height ) withAttributes:contentdict];
     
-    CGFloat speatorHeight =  207 + titlesize.height + contentsize.height;
+    CGFloat speatorHeight =  180 + titlesize.height + contentsize.height;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     //2、设置起点
@@ -226,29 +230,29 @@
     
     UIImage * Qcode =  [UIImage imageNamed:@"二维码"];
     
-    [Qcode drawInRect:CGRectMake(31, speatorHeight + 32, 80, 80)];
+    [Qcode drawInRect:CGRectMake(23, speatorHeight + 32, 80, 80)];
     
-    [@"长按二维码 下载币虎财经APP" drawInRect:CGRectMake(121 ,speatorHeight + 38, 190,15 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Regular" size:13],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#1A1A1A"]}];
+    [@"长按二维码 下载电子时代APP" drawInRect:CGRectMake(102 ,speatorHeight + 38, 135,15 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Regular" size:10],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#1A1A1A"]}];
     
-    NSMutableAttributedString * attri = [[NSMutableAttributedString alloc]initWithString:@"注册即可获得688颗糖果" attributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Regular" size:11],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#1A1A1A"]}];
+    NSMutableAttributedString * attri = [[NSMutableAttributedString alloc]initWithString:@"注册即可获得688颗糖果" attributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Regular" size:8],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#1A1A1A"]}];
     
-    [attri addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#00648E"] range:[@"注册即可获得688颗糖果" rangeOfString:@"688"]];
+    [attri addAttribute:NSForegroundColorAttributeName value:themeColor range:[@"注册即可获得688颗糖果" rangeOfString:@"688"]];
     
     [attri addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"PingFang-SC-Medium" size:12] range:[@"注册即可获得688颗糖果" rangeOfString:@"688"]];
     
     
-    [attri drawInRect:CGRectMake(121, speatorHeight + 58, 190,14 )];
+    [attri drawInRect:CGRectMake(102, speatorHeight + 58, 135,14 )];
     
-    NSMutableAttributedString * secondattri = [[NSMutableAttributedString alloc]initWithString:@"邀请好友再送688颗糖果" attributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Regular" size:11],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#1A1A1A"]}];
+    NSMutableAttributedString * secondattri = [[NSMutableAttributedString alloc]initWithString:@"邀请好友再送688颗糖果" attributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Regular" size:8],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#1A1A1A"]}];
     
-    [secondattri addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#00648E"] range:[@"邀请好友再送688颗糖果" rangeOfString:@"688"]];
+    [secondattri addAttribute:NSForegroundColorAttributeName value:themeColor range:[@"邀请好友再送688颗糖果" rangeOfString:@"688"]];
     
     [secondattri addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"PingFang-SC-Medium" size:12] range:[@"邀请好友再送688颗糖果" rangeOfString:@"688"]];
     
     
-    [secondattri drawInRect:CGRectMake(121, speatorHeight + 77, 190,14 )];
+    [secondattri drawInRect:CGRectMake(102, speatorHeight + 77, 135,14 )];
     
-    [@"每日登陆、签到、阅读、分享均有好礼相送" drawInRect:CGRectMake(121, speatorHeight + 95, 190,14 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Medium" size:9],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#8B8C8C"]}];
+    [@"每日登陆、签到、阅读、分享均有好礼相送" drawInRect:CGRectMake(102, speatorHeight + 95, 135,14 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Medium" size:9],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#8B8C8C"]}];
     
     UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
     
@@ -325,6 +329,26 @@
     return newImage;
     
     
+}
+
++(UIImage *)createNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat) size {
+    CGRect extent = CGRectIntegral(image.extent);
+    CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
+    size_t width = CGRectGetWidth(extent) * scale;
+    size_t height = CGRectGetHeight(extent) * scale;
+    CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
+    CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CGImageRef bitmapImage = [context createCGImage:image fromRect:extent];
+    CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
+    CGContextScaleCTM(bitmapRef, scale, scale);
+    CGContextDrawImage(bitmapRef, extent, bitmapImage);
+    
+    CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
+    // Cleanup
+    CGContextRelease(bitmapRef);
+    CGImageRelease(bitmapImage);
+    return [UIImage imageWithCGImage:scaledImage];
 }
 
 

@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setFakeNavigationBarCommonLeftButton];
     self.scrollview.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     _PwdTextField.delegate = self;
     _PwdTextField.secureTextEntry = YES;

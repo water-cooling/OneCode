@@ -8,13 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-
 @protocol shareLinkResultDelegate<NSObject>
-
-
 -(void)shareLinkResult:(BOOL)result AndCancel:(BOOL)cancel;
-;
-
 @end
 
 

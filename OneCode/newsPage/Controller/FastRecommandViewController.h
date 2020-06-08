@@ -16,7 +16,7 @@
 @end
 
 
-@interface FastRecommandViewController : UIViewController
+@interface FastRecommandViewController : BaseViewController
 
 @property(nonatomic,weak) id<shareImgResultDelegate>  delegate;
 

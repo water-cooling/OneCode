@@ -71,24 +71,15 @@
     {
         [self.PwdTextField insertText:self.PwdTextField.text];
     }else
-    {
-        
-        
-        
-        
-    }
+    {}
     
 }
 - (IBAction)BackClick:(UIButton *)sender {
-    
-    
-    
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
 }
 
 - (IBAction)LoginClick:(UIButton *)sender {
-    
     
     if (self.IphoneTextField.text == nil || [self.IphoneTextField.text isEqualToString:@""]) {
         
@@ -114,42 +105,22 @@
     [UserUtility usernameSignIn:self.IphoneTextField.text password:self.PwdTextField.text callback:^(UserModel *user, FGError *error) {
        
         if (!error) {
-            
             [MBManager showBriefAlert:@"登录成功"];
-            
-            
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-            
             [[NSNotificationCenter defaultCenter]postNotificationName:LoginIn object:nil];
-
-        }else
-        {
-            
+        }else{
             [MBManager showBriefAlert:error.descriptionStr];
-            
         }
-        
-        
     }];
-    
-    
-
-    
 }
-- (void)viewWillAppear:(BOOL)animated
-{
-    
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-    
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
--(void)viewWillDisappear:(BOOL)animated
-{
+-(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+
     
 }
 
