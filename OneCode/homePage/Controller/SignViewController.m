@@ -119,9 +119,9 @@
       }
     if ( !self.stateModel.todaySignIn) {
         UIButton * cornerbtn = self.ClickArr[self.stateModel.sginNum];
-        [cornerbtn setTitleColor:[UIColor colorWithHexString:@"#F98040"] forState:UIControlStateNormal];
+        [cornerbtn setTitleColor:themeColor forState:UIControlStateNormal];
         [cornerbtn setBackgroundColor:[UIColor colorWithHexString:@"#FFFFFF"]];
-        cornerbtn.layer.borderColor = [UIColor colorWithHexString:@"#F98040"].CGColor;
+        cornerbtn.layer.borderColor = themeColor.CGColor;
     }
     
 }
@@ -136,7 +136,7 @@
             [SignUntility SignClickcallback:^(SucceedModel *response, FGError *error) {
                 sender.userInteractionEnabled = YES;
                 if (!error) {
-                    btn.backgroundColor = [UIColor colorWithHexString:@"#F98040"];
+                    btn.backgroundColor = themeColor;
                     
                     [btn setTitleColor:[UIColor colorWithHexString:@"FFFFFF"] forState:UIControlStateNormal];
                     [self.showView removeFromSuperview];
@@ -181,7 +181,7 @@
         }
     }else  {
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
+        BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigation"];
         [self presentViewController:vc animated:YES completion:nil];
     }
 }

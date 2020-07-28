@@ -37,12 +37,18 @@
 #define iPhone6PlusBigMode ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen]currentMode].size) : NO)
 
 #define APPid @"624766110637531136"
+#define WXAppId @"wx324e243c18966941"
+#define WXAppSecret @"f0ca41f9aa4aa1fcf2c0d3b32bd92103"
+
+#define QQAppId @"101893990"
+#define QQAppKey @"b21eaee645d94565fb00c55a001e56a2"
+
 #define KHistorySearchPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"Searchhistories.plist"]
 
 #define phoneVersion [[UIDevice currentDevice] systemVersion]
 
 #define HeadDefault [UIImage imageNamed:@"头像"]
-#define bihucjUrl @"http://www.eleoke.com/cx.eleoke/"
+#define bihucjUrl @"http://acode.aganyun.com/cx.acode/"
 #define kDevice_iPhoneX \
 ({BOOL isPhoneX = NO;\
 if (@available(iOS 11.0, *)) {\

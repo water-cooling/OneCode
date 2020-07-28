@@ -213,7 +213,7 @@
 }
 -(NSMutableArray *)shareArr{
     if (!_shareArr) {
-        NSArray *ShareTypeArr = @[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina)];
+        NSArray *ShareTypeArr = @[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone)];
         _shareArr = [NSMutableArray array];
         for (NSNumber *type in ShareTypeArr) {
             if ([[UMSocialManager defaultManager]isInstall:type.integerValue]) {
@@ -223,5 +223,9 @@
     }
     return _shareArr;
 }
-
+-(void)turnToLogin{
+        BaseNavigationController *loginNavi = [self.storyboard instantiateViewControllerWithIdentifier:@"BaseNavigation"];
+        loginNavi.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self.presentingViewController presentViewController:loginNavi animated:YES completion:nil];
+}
 @end

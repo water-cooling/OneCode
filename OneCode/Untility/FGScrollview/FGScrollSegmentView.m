@@ -71,7 +71,6 @@
         label.tag = index;
         label.font = titleFont;
         label.text = str;
-        
         label.textColor = [UIColor colorWithHexString:@"#666666"];
 
         if (index == 0) {
@@ -220,37 +219,24 @@
 
 }
 
--(NSMutableArray *)itemsWidth
-{
-    
+-(NSMutableArray *)itemsWidth{
     if (!_itemsWidth) {
-        
         _itemsWidth = [NSMutableArray array];
     }
-    
     return _itemsWidth;
-    
 }
 
--(NSMutableArray *)titleViews
-{
-    
+-(NSMutableArray *)titleViews{
     if (!_titleViews) {
-        
         _titleViews = [NSMutableArray array];
     }
-    
     return _titleViews;
-    
 }
 
--(UIView *)scrollLine
-{
+-(UIView *)scrollLine{
     if (!_scrollLine) {
-        
         _scrollLine = [UIView new];
-
-        _scrollLine.backgroundColor = buttonSelectBackgroundColor;
+        _scrollLine.backgroundColor = themeColor;
     }
     return _scrollLine;
     

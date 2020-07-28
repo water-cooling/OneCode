@@ -203,7 +203,7 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
     if (![UserUtility hasLogin]) {
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
+        BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigation"];
         
         [self presentViewController:vc animated:YES completion:nil];
         
@@ -237,7 +237,7 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
                     web.title = @"行情详情";
                     break;
                 case 3:
-                    web.title = @"币虎详情";
+                    web.title = @"壹码详情";
                     
                     break;
                     
@@ -276,7 +276,7 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     if (![UserUtility hasLogin]) {
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
+        BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigation"];
         [self presentViewController:vc animated:YES completion:nil];
     }else{
     
@@ -297,7 +297,7 @@ cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)mo
             break;
             
         case 3:
-            web.title = @"币虎专栏详情";
+            web.title = @"壹码专栏详情";
             
             break;
             

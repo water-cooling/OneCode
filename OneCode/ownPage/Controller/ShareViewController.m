@@ -116,7 +116,7 @@
     }else
     {
         
-    share = [UMShareWebpageObject shareObjectWithTitle:@"我正在使用【币虎财经】，推荐给你"descr:@"币虎在手，资讯、快讯、行情、糖果应有尽有" thumImage:[UIImage imageNamed:@"defaultImg"]];
+    share = [UMShareWebpageObject shareObjectWithTitle:@"我正在使用【壹码】，推荐给你"descr:@"壹码在手，资讯、快讯、行情、糖果应有尽有" thumImage:[UIImage imageNamed:@"defaultImg"]];
 
     }
     

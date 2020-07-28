@@ -49,17 +49,17 @@
 			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx5fc5d1954ca50993</string>
+				<string>wx324e243c18966941</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.bihucj.bihu</string>
+			<string>com.aganyun.acode2</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>bihu</string>
+				<string>aCode</string>
 			</array>
 		</dict>
 	</array>
@@ -67,6 +67,7 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>weixinULAPI</string>
 		<string>wechat</string>
 		<string>weixin</string>
 		<string>sinaweibohd</string>

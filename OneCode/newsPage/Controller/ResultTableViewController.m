@@ -35,15 +35,14 @@
     self.view.backgroundColor = [UIColor whiteColor ];
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, UISCREENWIDTH-35-15, 44)];
-    self.searchbar.frame = CGRectMake(0, 8, 275*iPhonescale ,28);
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, UISCREENWIDTH-56, 44)];
+    self.searchbar.frame = CGRectMake(0, 8, view.width-74 ,28);
     [view addSubview:self.searchbar];
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"搜索" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:17];
-    button.frame =  CGRectMake(view.width - 35, 13, 35 , 16);
+    button.frame =  CGRectMake(view.width - 50, 13, 35 , 16);
     [button addTarget:self action:@selector(seachClick) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:button];
     self.navigationItem.titleView = view;
@@ -346,7 +345,7 @@ self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:
     });
     
 }
--(UISearchBar *)searchBar{
+-(UISearchBar *)searchbar{
     if (!_searchbar) {
         _searchbar =[[UISearchBar alloc]init];
         _searchbar.placeholder = @"搜索关键字";

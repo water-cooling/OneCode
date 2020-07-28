@@ -232,7 +232,7 @@
     
     [Qcode drawInRect:CGRectMake(23, speatorHeight + 32, 80, 80)];
     
-    [@"长按二维码 下载电子时代APP" drawInRect:CGRectMake(102 ,speatorHeight + 38, 135,15 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Regular" size:10],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#1A1A1A"]}];
+    [@"长按二维码 下载壹码APP" drawInRect:CGRectMake(102 ,speatorHeight + 38, 135,15 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Regular" size:10],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#1A1A1A"]}];
     
     NSMutableAttributedString * attri = [[NSMutableAttributedString alloc]initWithString:@"注册即可获得688颗糖果" attributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Regular" size:8],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#1A1A1A"]}];
     

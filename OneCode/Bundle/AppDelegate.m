@@ -32,9 +32,6 @@
     [UMConfigure initWithAppkey:@"5b5fc45bf29d9811760007ff" channel:@"App Store"];
     [[UMSocialManager defaultManager] openLog:YES];
     [MobClick setCrashReportEnabled:YES];
-
-  
-    
     return YES;
 }
 
@@ -42,7 +39,7 @@
 - (void)configUSharePlatforms
 {
     /* 设置微信的appKey和appSecret */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx5fc5d1954ca50993" appSecret:@"f441bd700eddb68a4398aa80de20d2f5" redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:WXAppId appSecret:WXAppSecret redirectURL:@"http://mobile.umeng.com/social"];
     /*
      * 移除相应平台的分享，如微信收藏
      */
@@ -50,13 +47,11 @@
     /* 设置分享到QQ互联的appID
      * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
      */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1107465918"/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:QQAppId/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
     /* 设置新浪的appKey和appSecret */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"4138688526"  appSecret:@"564d7787d9d855333576f1ca1f60893c" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
     
 }
-
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

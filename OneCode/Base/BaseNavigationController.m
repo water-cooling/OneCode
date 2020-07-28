@@ -50,20 +50,21 @@
     //全部修改返回按钮,但是会失去右滑返回的手势
     if (viewController.navigationItem.leftBarButtonItem ==nil && self.viewControllers.count >=1) {
         viewController.hidesBottomBarWhenPushed = YES;
-        [self setFakeNavigationBarCommonLeftButton];
+        viewController.navigationItem.leftBarButtonItem = [self setFakeNavigationBarCommonLeftButton];
+
         [super pushViewController:viewController animated:animated];
     }
 }
--(void)setFakeNavigationBarCommonLeftButton{
+-(UIBarButtonItem *)setFakeNavigationBarCommonLeftButton{
     UIBarButtonItem *backItem =
     [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"返回"]
                                      style:UIBarButtonItemStylePlain
                                     target:self
                                     action:@selector(backItemAction)];
     backItem.tintColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = backItem;
+    return backItem;
 }
 -(void)backItemAction{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self popViewControllerAnimated:YES];
 }
 @end

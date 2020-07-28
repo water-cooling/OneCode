@@ -11,6 +11,7 @@
 @implementation NewsUntility
 + (void)GetFlashspageNo:(NSInteger)pageNo pageSize:(NSInteger)pageSize tTitleLike:(NSString *)tTitleLike callback:(void (^)(FastNewListResponseModel *, FGError *))block{
     NSString * url =  [bihucjUrl stringByAppendingString:@"api/bihucj/flash/getFlashs"];
+    NSLog(@"%@",url);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     //网络请求超时时间
     manager.requestSerializer.timeoutInterval = 10;

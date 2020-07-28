@@ -6,7 +6,6 @@
 //  Copyright © 2018年 王师傅 Mac. All rights reserved.
 //
 
-#define LineColor  [UIColor colorWithHexString:@"#FFC41A"]
 
 #import "NormalTableViewCell.h"
 
@@ -23,7 +22,7 @@
     
     CGContextRef context=UIGraphicsGetCurrentContext();
     
-    CGContextSetStrokeColorWithColor(context, LineColor.CGColor);//设置线的颜色
+    CGContextSetStrokeColorWithColor(context, themeColor.CGColor);//设置线的颜色
     
     CGContextMoveToPoint(context,15,contest);//画线的起始点位置
     

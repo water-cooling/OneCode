@@ -15,15 +15,10 @@
     // Initialization code
 }
 - (IBAction)MoreClick:(UIButton *)sender {
-    
-   
     [self.delegate MoreBtnClick:self.tag btnState:sender];
-
-    
     
 }
 - (IBAction)ShareClick:(UIButton *)sender {
-    
     [self.delegate ShareBtnClick:self.tag];
 
 }

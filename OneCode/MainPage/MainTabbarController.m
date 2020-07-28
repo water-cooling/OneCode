@@ -42,7 +42,7 @@
 -(void)Loginout{
     [self setSelectedIndex:1];
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
+    BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigation"];
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:vc animated:YES completion:nil];
     
@@ -68,7 +68,7 @@ if ([UserUtility hasLogin]) {
     
     
 UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
+BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigation"];
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
 [self presentViewController:vc animated:YES completion:nil];
 

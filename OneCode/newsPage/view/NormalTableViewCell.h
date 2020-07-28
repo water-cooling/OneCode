@@ -9,16 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @protocol NewsCellClickDelegate<NSObject>
-
 -(void)MoreBtnClick:(NSInteger)SelectIndex btnState:(UIButton *)Sender;
-
-
 -(void)ShareBtnClick:(NSInteger)SelectIndex;
-
 @end
-
-
-
 @interface NormalTableViewCell : UITableViewCell
 
 @property(weak,nonatomic) id<NewsCellClickDelegate>delegate;

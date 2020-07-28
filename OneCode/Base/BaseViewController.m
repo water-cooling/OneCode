@@ -130,7 +130,7 @@
 }
 
 -(void)turnToLogin{
-    BaseNavigationController *loginNavi = [self.storyboard instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
+    BaseNavigationController *loginNavi = [self.storyboard instantiateViewControllerWithIdentifier:@"BaseNavigation"];
     loginNavi.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.navigationController presentViewController:loginNavi animated:YES completion:nil];
 }

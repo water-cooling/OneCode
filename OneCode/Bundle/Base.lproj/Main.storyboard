@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="caC-Vf-I8D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="caC-Vf-I8D">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,10 +30,10 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00L-YR-iLi">
-                                        <rect key="frame" x="15" y="35" width="9" height="15"/>
+                                        <rect key="frame" x="15" y="35" width="19" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="9" id="F83-en-BuB"/>
-                                            <constraint firstAttribute="height" constant="15" id="prJ-qF-FhL"/>
+                                            <constraint firstAttribute="width" constant="19" id="F83-en-BuB"/>
+                                            <constraint firstAttribute="height" constant="25" id="prJ-qF-FhL"/>
                                         </constraints>
                                         <state key="normal" image="返回"/>
                                         <connections>
@@ -218,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="di6-kN-99w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975" y="3724"/>
+            <point key="canvasLocation" x="534" y="3560"/>
         </scene>
         <!--Edit Pwd View Controller-->
         <scene sceneID="8Sz-Bc-tYH">
@@ -439,7 +440,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lv1-de-eF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2223" y="2919"/>
+            <point key="canvasLocation" x="1639" y="2731"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="b2f-we-7jN">
@@ -459,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKK-oJ-OTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="949.60000000000002" y="-243.32833583208398"/>
+            <point key="canvasLocation" x="-3791" y="775"/>
         </scene>
         <!--快讯-->
         <scene sceneID="NME-mo-lec">
@@ -478,45 +479,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Lw-Sq-d6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="63" y="537"/>
-        </scene>
-        <!--实时行情-->
-        <scene sceneID="UOC-aH-Xbn">
-            <objects>
-                <navigationController id="y9U-KZ-cYY" customClass="BaseNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="实时行情" image="实时行情" selectedImage="实时行情Select" id="lUg-Mx-Lp7"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qcl-Ja-dAj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Bnp-tD-wA6" kind="relationship" relationship="rootViewController" id="OEU-dl-mSw"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TFR-tD-WgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-898" y="1127"/>
-        </scene>
-        <!--Money Content Controller-->
-        <scene sceneID="WZN-KB-wgm">
-            <objects>
-                <viewController id="Bnp-tD-wA6" customClass="MoneyContentController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Bqj-Ev-Ho7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="vZs-Tr-k9q"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="HQI-V5-vyw"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QXA-Zm-fa3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-97" y="1209"/>
+            <point key="canvasLocation" x="-1564" y="-4"/>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="KYh-AK-pgd">
             <objects>
-                <navigationController storyboardIdentifier="BaseNavigationController" wantsFullScreenLayout="YES" id="lxg-LK-T21" customClass="BaseNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BaseNavigation" wantsFullScreenLayout="YES" id="lxg-LK-T21" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7PT-fa-gYl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -527,7 +495,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiC-Rk-owA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="249" y="2992"/>
+            <point key="canvasLocation" x="-756" y="2731"/>
         </scene>
         <!--Fast News View Controller-->
         <scene sceneID="xIW-53-hQ2">
@@ -547,7 +515,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTC-VY-OnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1039" y="412"/>
+            <point key="canvasLocation" x="-1564" y="857"/>
         </scene>
         <!--Own View Controller-->
         <scene sceneID="b2O-av-0vM">
@@ -1207,7 +1175,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38D-h9-v77" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2961" y="1934"/>
+            <point key="canvasLocation" x="321" y="857"/>
         </scene>
         <!--Edit Iphone View Controller-->
         <scene sceneID="Lhx-IU-Rjd">
@@ -1347,7 +1315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gde-lR-bOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1886" y="1245"/>
+            <point key="canvasLocation" x="1252" y="857"/>
         </scene>
         <!--My Sweet Table View Controller-->
         <scene sceneID="XBU-P2-ze8">
@@ -1428,7 +1396,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbP-Dm-UaR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1185" y="1869"/>
+            <point key="canvasLocation" x="1196" y="128"/>
         </scene>
         <!--我的-->
         <scene sceneID="dwe-dr-8zr">
@@ -1447,7 +1415,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cFG-iQ-jwW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2614" y="898"/>
+            <point key="canvasLocation" x="321" y="81"/>
         </scene>
         <!--首页-->
         <scene sceneID="V7b-Vd-ske">
@@ -1466,7 +1434,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fk-oR-rc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="70" y="-243"/>
+            <point key="canvasLocation" x="-3791" y="-66"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="m6e-ga-CLR">
@@ -1585,10 +1553,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5a-u4-LOA">
-                                        <rect key="frame" x="15" y="35" width="9" height="15"/>
+                                        <rect key="frame" x="15" y="35" width="19" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="9" id="E28-OF-cCQ"/>
-                                            <constraint firstAttribute="height" constant="15" id="tAf-bR-OlE"/>
+                                            <constraint firstAttribute="width" constant="19" id="E28-OF-cCQ"/>
+                                            <constraint firstAttribute="height" constant="25" id="tAf-bR-OlE"/>
                                         </constraints>
                                         <state key="normal" image="返回"/>
                                         <connections>
@@ -1651,7 +1619,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNy-Y2-SrD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118" y="2979"/>
+            <point key="canvasLocation" x="535" y="2731"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="21X-Hj-ojA">
@@ -1718,7 +1686,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ERm-hl-0sx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="402" y="1899"/>
+            <point key="canvasLocation" x="2103" y="857"/>
         </scene>
         <!--Main Tabbar Controller-->
         <scene sceneID="4AF-Jr-hUX">
@@ -1737,7 +1705,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vB4-Us-2d7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-826" y="-260"/>
+            <point key="canvasLocation" x="-860" y="-894"/>
         </scene>
         <!--Fast Recommand View Controller-->
         <scene sceneID="N5p-om-IGY">
@@ -1778,7 +1746,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUE-Xz-hid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2973.5999999999999" y="1862.5187406296852"/>
+            <point key="canvasLocation" x="2145" y="128"/>
         </scene>
     </scenes>
     <resources>
@@ -1786,8 +1754,6 @@
         <image name="上拉" width="14" height="8"/>
         <image name="下拉" width="14" height="8"/>
         <image name="关于" width="14" height="14"/>
-        <image name="实时行情" width="21" height="21"/>
-        <image name="实时行情Select" width="21" height="21"/>
         <image name="快讯" width="21" height="21"/>
         <image name="快讯select" width="21" height="21"/>
         <image name="我的" width="21" height="21"/>

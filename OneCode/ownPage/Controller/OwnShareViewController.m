@@ -282,7 +282,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
 }
 -(NSMutableArray *)shareArr{
     if (!_shareArr) {
-        NSArray *ShareTypeArr = @[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina)];
+        NSArray *ShareTypeArr = @[@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone)];
         _shareArr = [NSMutableArray array];
         for (NSNumber *type in ShareTypeArr) {
             if ([[UMSocialManager defaultManager]isInstall:type.integerValue]) {

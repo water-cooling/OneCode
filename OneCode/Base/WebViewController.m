@@ -251,9 +251,9 @@
         _shareBtn.layer.cornerRadius = 20;
         
         _shareBtn.layer.masksToBounds = YES;
-        _shareBtn.backgroundColor = buttonSelectBackgroundColor;
+        _shareBtn.backgroundColor = themeColor;
         
-        [_shareBtn  setTitleColor:titleColor forState:UIControlStateNormal];
+        [_shareBtn  setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
         [_shareBtn setTitle:@"分享获得糖果" forState:UIControlStateNormal];
         
